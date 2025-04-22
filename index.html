@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wedding Compare</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css"/>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,11 +14,23 @@
   </div>
 
   <div class="container">
-    <form id="venueSearchForm" autocomplete="off">
-      <input type="text" id="venueLocation" placeholder="Search location..." required />
-      <div id="autocomplete-list" class="autocomplete-list"></div>
-      <input type="number" id="venueDayGuests" placeholder="Number of day guests" required />
-      <input type="number" id="venueEveningGuests" placeholder="Number of evening guests" required />
+    <form id="venueSearchForm">
+      <input type="text" id="venueLocation" placeholder="Enter a location..." required />
+      <select id="searchRadius">
+        <option value="0">Within 0 miles</option>
+        <option value="1">Within 1 mile</option>
+        <option value="3">Within 3 miles</option>
+        <option value="5">Within 5 miles</option>
+        <option value="10">Within 10 miles</option>
+        <option value="20">Within 20 miles</option>
+        <option value="50">Within 50 miles</option>
+      </select>
+      <button type="button" class="toggle-advanced">Advanced Search</button>
+      <div id="advancedSearch" class="hidden">
+        <input type="number" id="venueDayGuests" placeholder="Number of day guests" />
+        <input type="number" id="venueEveningGuests" placeholder="Number of evening guests" />
+        <input type="date" id="weddingDate" />
+      </div>
       <button type="submit">Search</button>
     </form>
 

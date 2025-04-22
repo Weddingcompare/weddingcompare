@@ -5,68 +5,30 @@ body {
   padding: 0;
   color: #000000;
 }
-
 .header {
   padding: 60px 20px 30px;
   text-align: center;
   background: #ffffff;
   border-bottom: 1px solid #e0e0e0;
 }
-
 .header h1 {
   font-family: 'Great Vibes', cursive;
   font-size: 4rem;
   color: #000000;
   margin: 0;
 }
-
 .header .tagline {
   font-size: 1.2rem;
   color: #555555;
   margin-top: 10px;
   font-style: italic;
 }
-
-.tabs {
-  display: flex;
-  justify-content: center;
-  background: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
-}
-
-.tab-button {
-  padding: 15px 30px;
-  cursor: pointer;
-  background: none;
-  border: none;
-  font-size: 1.1em;
-  font-family: 'Playfair Display', serif;
-  color: #333333;
-  transition: all 0.3s;
-}
-
-.tab-button:hover,
-.tab-button.active {
-  background-color: #f0f0f0;
-  border-bottom: 3px solid #000000;
-  color: #000000;
-}
-
 .container {
   max-width: 900px;
   margin: auto;
   padding: 40px 20px;
   background: #ffffff;
-  border-radius: 12px;
 }
-
-form {
-  background: #ffffff;
-  padding: 25px;
-  border-radius: 16px;
-  border: 1px solid #ddd;
-}
-
 input, select, button {
   width: 100%;
   margin: 12px 0;
@@ -78,46 +40,37 @@ input, select, button {
   color: #000000;
   background-color: #ffffff;
 }
-
-input:focus, select:focus {
-  outline: none;
-  border-color: #000000;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
-}
-
 button {
   background-color: #000000;
   color: white;
   border: none;
   cursor: pointer;
   font-weight: bold;
-  transition: background 0.3s ease;
 }
-
 button:hover {
   background-color: #444444;
 }
-
 .hidden {
   display: none;
 }
-
-.autocomplete-list {
+.toggle-advanced {
+  margin-top: 10px;
+  background-color: #e0e0e0;
+  color: #000;
   border: 1px solid #ccc;
-  border-top: none;
-  max-height: 150px;
-  overflow-y: auto;
-  position: absolute;
-  background: white;
-  width: 100%;
-  z-index: 99;
 }
-
-.autocomplete-item {
-  padding: 10px;
-  cursor: pointer;
+.venue-result {
+  display: flex;
+  gap: 20px;
+  background: #fff;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
-
-.autocomplete-item:hover {
-  background-color: #f0f0f0;
+.venue-img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
 }
