@@ -1,47 +1,25 @@
 [
   {
-    "name": "The Grand Barn",
-    "location": "Oxfordshire",
-    "guests": 120,
-    "eveningGuests": 50,
-    "catering": "yes",
-    "type": "barn",
-    "price": 8000
-  },
-  {
-    "name": "Castle View Estate",
-    "location": "Kent",
-    "guests": 200,
-    "eveningGuests": 80,
-    "catering": "yes",
-    "type": "castle",
-    "price": 15000
-  },
-  {
-    "name": "Seaside Pavilion",
-    "location": "Brighton",
-    "guests": 100,
-    "eveningGuests": 40,
-    "catering": "no",
-    "type": "seaside",
-    "price": 6000
-  },
-  {
-    "name": "Urban Chic Hotel",
-    "location": "London",
-    "guests": 150,
-    "eveningGuests": 60,
-    "catering": "yes",
-    "type": "hotel",
-    "price": 12000
-  },
-  {
-    "name": "Rustic Farmhouse",
-    "location": "Devon",
-    "guests": 90,
-    "eveningGuests": 30,
-    "catering": "no",
-    "type": "farmhouse",
-    "price": 5000
+    "name": "Folly Farm Centre",
+    "location": "Stowey, Pensford, Bristol",
+    "type": "Barn",
+    "cateringProvided": true,
+    "contact": {
+      "email": "info@follyfarm.org",
+      "phone": "01275 331590",
+      "website": "https://www.follyfarm.org/weddings"
+    },
+    "guests": {
+      "maxDay": 100,
+      "maxEvening": 150,
+      "minTotal": 60
+    },
+    "pricing": {
+      "venueHire": 9500,
+      "mealPerGuest": 47.50,
+      "drinksPerGuest": 23.00,
+      "eveningFoodPerGuest": 6.50
+    },
+    "accommodationAvailable": true
   }
 ]
