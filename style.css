@@ -1,18 +1,21 @@
 body {
   font-family: 'Playfair Display', serif;
-  background-color: #fffdfc;
+  background-color: #fefefe;
   margin: 0;
   padding: 0;
   color: #5a4b44;
   position: relative;
   overflow-x: hidden;
+  background-image: url('https://i.imgur.com/GJzKPHE.png'); /* subtle floral background */
+  background-repeat: repeat;
+  background-size: 300px;
 }
 
 .header {
   padding: 60px 20px 30px;
   text-align: center;
+  background: rgba(255, 255, 255, 0.85);
   border-bottom: 1px solid #e5dcdc;
-  background: #fffaf8;
 }
 
 .header h1 {
@@ -32,7 +35,7 @@ body {
 .tabs {
   display: flex;
   justify-content: center;
-  background: #fef8f6;
+  background: rgba(255, 255, 255, 0.85);
   border-bottom: 1px solid #ccc;
 }
 
@@ -58,10 +61,13 @@ body {
   max-width: 900px;
   margin: auto;
   padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
 }
 
 form {
-  background: #fff;
+  background: #ffffff;
   padding: 25px;
   border-radius: 16px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.06);
@@ -103,8 +109,8 @@ button:hover {
 
 .floral-corner {
   position: absolute;
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 1;
@@ -113,11 +119,11 @@ button:hover {
 .floral-corner.top-left {
   top: 0;
   left: 0;
-  background-image: url('https://i.imgur.com/MXtD59P.png');
+  background-image: url('https://i.imgur.com/fFzG5Wn.png'); /* elegant floral */
 }
 
 .floral-corner.bottom-right {
   bottom: 0;
   right: 0;
-  background-image: url('https://i.imgur.com/5UEoOyz.png');
+  background-image: url('https://i.imgur.com/zJLdnLh.png'); /* elegant floral */
 }
