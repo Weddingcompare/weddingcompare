@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Compare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="header">
+    <h1>Wedding Compare</h1>
+    <p class="tagline">Find your dream venue with elegance and ease</p>
+  </div>
+
+  <div class="container">
+    <form id="searchForm">
+      <input type="text" id="locationInput" placeholder="Search by location..." />
+
+      <button type="button" id="toggleAdvanced">Advanced Search</button>
+
+      <div id="advancedSearch" class="hidden">
+        <label>
+          Number of Guests:
+          <input type="number" id="guestsInput" min="1" />
+        </label>
+        <label>
+          Additional Evening Guests:
+          <input type="number" id="eveningGuestsInput" min="0" />
+        </label>
+        <label>
+          Catering Required:
+          <select id="cateringInput">
+            <option value="">Any</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </label>
+        <label>
+          Type of Venue:
+          <select id="venueTypeInput">
+            <option value="">Any</option>
+            <option value="barn">Barn</option>
+            <option value="town hall">Town Hall</option>
+            <option value="hotel">Hotel</option>
+            <option value="castle">Castle</option>
+            <option value="seaside">Seaside</option>
+            <option value="farmhouse">Farmhouse</option>
+          </select>
+        </label>
+      </div>
+
+      <button type="submit">Search</button>
+    </form>
+
+    <div class="sort-options">
+      <label for="sortPrice">Sort by Price:</label>
+      <select id="sortPrice">
+        <option value="default">Default</option>
+        <option value="asc">Low to High</option>
+        <option value="desc">High to Low</option>
+      </select>
+    </div>
+
+    <div id="results"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
