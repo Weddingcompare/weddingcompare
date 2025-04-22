@@ -1,42 +1,26 @@
 body {
-  font-family: 'Playfair Display', serif;
-  background: url('https://www.transparenttextures.com/patterns/white-floral.png');
-  background-color: #fff8f4;
-  color: #4b3e3e;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff8f0;
+  color: #333;
   margin: 0;
-  padding: 0;
-}
-
-.header {
-  background-color: #f3e8e2;
-  padding: 40px 20px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-}
-
-.header h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 3rem;
-  margin: 0;
-  color: #b76e79;
-}
-
-.header .tagline {
-  font-size: 1.2rem;
-  color: #7a5c5c;
+  padding: 20px;
 }
 
 .container {
   max-width: 800px;
   margin: auto;
-  padding: 30px 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #b26b6b;
 }
 
 form {
-  background: white;
+  background: #fff;
   padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   margin-bottom: 20px;
 }
 
@@ -44,22 +28,20 @@ input, select, button {
   display: block;
   width: 100%;
   margin: 10px 0;
-  padding: 12px;
+  padding: 10px;
   font-size: 1em;
-  border: 1px solid #ddd;
-  border-radius: 8px;
 }
 
 button {
-  background-color: #b76e79;
+  background-color: #b26b6b;
   color: white;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
 }
 
 button:hover {
-  background-color: #9e5e68;
+  background-color: #a05353;
 }
 
 .hidden {
@@ -71,15 +53,10 @@ button:hover {
 }
 
 .venue-card {
-  background: #fff;
+  background: white;
   border: 1px solid #eee;
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-}
-
-.venue-card h3 {
-  color: #8a4e5b;
-  margin-top: 0;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
