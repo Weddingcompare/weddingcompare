@@ -34,11 +34,11 @@ fetch('venues.json')
 document.querySelector('#venueSearchForm').addEventListener('submit', function (e) {
   e.preventDefault();
   const locationInput = document.querySelector('#venueLocation').value.toLowerCase();
-  const dayGuests = parseInt(document.querySelector('#venueDayGuests').value);
-  const eveningGuests = parseInt(document.querySelector('#venueEveningGuests').value);
+  const dayGuests = parseInt(document.querySelector('#venueDayGuests').value) || 0;
+  const eveningGuests = parseInt(document.querySelector('#venueEveningGuests').value) || 0;
 
   const results = venues
-    .filter(venue => venue.location.toLowerCase().includes(locationInput))
+    .filter(venue => !locationInput || venue.location.toLowerCase().includes(locationInput))
     .map(venue => {
       const totalCost =
         venue.pricing.venueHire +
