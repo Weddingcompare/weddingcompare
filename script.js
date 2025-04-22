@@ -2,9 +2,7 @@ let venues = [];
 
 fetch('venues.json')
   .then(response => response.json())
-  .then(data => {
-    venues = data;
-  });
+  .then(data => { venues = data; });
 
 document.querySelector('.toggle-advanced').addEventListener('click', () => {
   document.getElementById('advancedSearch').classList.toggle('hidden');
@@ -17,37 +15,32 @@ document.getElementById('venueSearchForm').addEventListener('submit', function (
   const eveningGuests = parseInt(document.getElementById('venueEveningGuests').value) || 0;
 
   const results = venues
-    .filter(venue => venue.location.toLowerCase().includes(locationInput))
-    .map(venue => {
-      const totalCost =
-        venue.pricing.venueHire +
-        (dayGuests * (venue.pricing.mealPerGuest + venue.pricing.drinksPerGuest)) +
-        (eveningGuests * venue.pricing.eveningFoodPerGuest);
-
-      return {
-        ...venue,
-        estimatedCost: totalCost.toFixed(2)
-      };
-    });
+    .filter(v => v.location.toLowerCase().includes(locationInput))
+    .map(v => ({
+      ...v,
+      estimatedCost: (
+        v.pricing.venueHire +
+        dayGuests * (v.pricing.mealPerGuest + v.pricing.drinksPerGuest) +
+        eveningGuests * v.pricing.eveningFoodPerGuest
+      ).toFixed(2)
+    }));
 
   const resultsDiv = document.getElementById('venueResults');
   resultsDiv.innerHTML = '';
-
-  results.forEach(venue => {
+  results.forEach(v => {
     const div = document.createElement('div');
     div.className = 'venue-result';
     div.innerHTML = `
-      <img src="${venue.image}" alt="${venue.name}" class="venue-img"/>
-      <div>
-        <h3>${venue.name}</h3>
-        <p><strong>Location:</strong> ${venue.location}</p>
-        <p><strong>Type:</strong> ${venue.type}</p>
-        <p><strong>Catering:</strong> ${venue.cateringProvided ? 'Yes' : 'No'}</p>
-        <p><strong>Venue Hire:</strong> £${venue.pricing.venueHire.toLocaleString()}</p>
-        <p><strong>Estimated Total:</strong> £${venue.estimatedCost}</p>
-        <p><a href="${venue.contact.website}" target="_blank">Visit website</a></p>
+      <div class="gallery-container">
+        ${v.gallery.map(img => `<img src="${img}" class="slider-img" alt="gallery image">`).join('')}
       </div>
-    `;
+      <div>
+        <h3>${v.name}</h3>
+        <p><strong>Location:</strong> ${v.location}</p>
+        <p><strong>Venue Hire:</strong> £${v.pricing.venueHire.toLocaleString()}</p>
+        <p><strong>Estimated Cost:</strong> £${v.estimatedCost}</p>
+        <a href="${v.contact.website}" target="_blank">Visit website</a>
+      </div>`;
     resultsDiv.appendChild(div);
   });
 });
