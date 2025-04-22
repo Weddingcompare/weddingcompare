@@ -2,63 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wedding Venue Finder</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Compare</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="floral-corner top-left"></div>
+  <div class="floral-corner bottom-right"></div>
+
+  <div class="header">
+    <h1>Wedding Compare</h1>
+    <div class="tagline">Find your perfect wedding vendors</div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-button active" data-tab="venues">Venues</button>
+    <button class="tab-button" data-tab="caterers">Caterers</button>
+    <button class="tab-button" data-tab="music">Music</button>
+    <button class="tab-button" data-tab="entertainment">Entertainment</button>
+    <button class="tab-button" data-tab="photography">Photography</button>
+  </div>
+
   <div class="container">
-    <h1>Find Your Perfect Wedding Venue 💒</h1>
-
-    <form id="searchForm">
-      <input type="text" id="locationInput" placeholder="Search by location..." />
-
-      <button type="button" id="toggleAdvanced">Advanced Search</button>
-
-      <div id="advancedSearch" class="hidden">
-        <label>
-          Number of Guests:
-          <input type="number" id="guestsInput" min="1" />
-        </label>
-        <label>
-          Additional Evening Guests:
-          <input type="number" id="eveningGuestsInput" min="0" />
-        </label>
-        <label>
-          Catering Required:
-          <select id="cateringInput">
-            <option value="">Any</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-        </label>
-        <label>
-          Type of Venue:
-          <select id="venueTypeInput">
-            <option value="">Any</option>
-            <option value="barn">Barn</option>
-            <option value="town hall">Town Hall</option>
-            <option value="hotel">Hotel</option>
-            <option value="castle">Castle</option>
-            <option value="seaside">Seaside</option>
-            <option value="farmhouse">Farmhouse</option>
-          </select>
-        </label>
-      </div>
-
-      <button type="submit">Search</button>
-    </form>
-
-    <div class="sort-options">
-      <label for="sortPrice">Sort by Price:</label>
-      <select id="sortPrice">
-        <option value="default">Default</option>
-        <option value="asc">Low to High</option>
-        <option value="desc">High to Low</option>
-      </select>
+    <div id="venues" class="tab-content">
+      <form>
+        <input type="text" placeholder="Search location..." />
+        <input type="number" placeholder="Number of guests" />
+        <input type="number" placeholder="Additional evening guests" />
+        <select>
+          <option>Catering required?</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <select>
+          <option>Type of venue</option>
+          <option>Barn</option>
+          <option>Town Hall</option>
+          <option>Castle</option>
+          <option>Garden</option>
+          <option>Beach</option>
+          <option>Hotel</option>
+          <option>Winery</option>
+          <option>Country House</option>
+        </select>
+        <button type="submit">Search</button>
+      </form>
     </div>
 
-    <div id="results"></div>
+    <div id="caterers" class="tab-content hidden"><form><input type="text" placeholder="Search caterers by location" /><button>Search</button></form></div>
+    <div id="music" class="tab-content hidden"><form><input type="text" placeholder="Search music by location" /><button>Search</button></form></div>
+    <div id="entertainment" class="tab-content hidden"><form><input type="text" placeholder="Search entertainment by location" /><button>Search</button></form></div>
+    <div id="photography" class="tab-content hidden"><form><input type="text" placeholder="Search photography by location" /><button>Search</button></form></div>
   </div>
 
   <script src="script.js"></script>
