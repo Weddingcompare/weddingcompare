@@ -127,3 +127,15 @@ button:hover {
   right: 0;
   background-image: url('https://i.imgur.com/zJLdnLh.png'); /* elegant floral */
 }
+
+.hero-image-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.hero-image {
+  max-width: 90%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+}
