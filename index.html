@@ -2,111 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wedding Compare</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: white;
+      color: #333;
+    }
+
+    .header {
+      background-image: url('images/top-floral-pattern.jpg');
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: cover;
+      padding: 60px 20px 20px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      color: #444;
+      margin: 0;
+    }
+
+    .main {
+      padding: 40px 20px;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    .footer {
+      background-image: url('images/bottom-floral-pattern.jpg');
+      background-repeat: no-repeat;
+      background-position: bottom center;
+      background-size: cover;
+      padding: 40px 20px 60px 20px;
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* Additional styling for buttons, forms, etc., can be added here */
+  </style>
 </head>
 <body>
   <div class="header">
     <h1>Wedding Compare</h1>
-    <p class="tagline">Plan your dream wedding with ease and elegance</p>
   </div>
 
-  <div class="tabs">
-    <button class="tab-button active" data-tab="venues">Venues</button>
-    <button class="tab-button" data-tab="caterers">Caterers</button>
-    <button class="tab-button" data-tab="music">Music</button>
-    <button class="tab-button" data-tab="entertainment">Entertainment</button>
-    <button class="tab-button" data-tab="photography">Photography</button>
+  <div class="main">
+    <h2>Find Your Perfect Wedding Venue</h2>
+    <p>Search and compare wedding venues by price, location, and availability.</p>
+    <!-- Your existing venue search UI goes here -->
   </div>
 
-  <div class="container">
-    <div class="tab-content" id="venues">
-      <h2>Search Wedding Venues</h2>
-      <form>
-        <input type="text" placeholder="Location" />
-        <input type="number" placeholder="Number of Guests" />
-        <input type="number" placeholder="Evening Guests" />
-        <select>
-          <option>Catering Required?</option>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
-        <select>
-          <option>Venue Type</option>
-          <option>Barn</option>
-          <option>Town Hall</option>
-          <option>Hotel</option>
-          <option>Castle</option>
-          <option>Seaside</option>
-          <option>Farmhouse</option>
-        </select>
-        <button type="submit">Search Venues</button>
-      </form>
-    </div>
-
-    <div class="tab-content hidden" id="caterers">
-      <h2>Search Caterers</h2>
-      <form>
-        <input type="text" placeholder="Location" />
-        <select>
-          <option>Cuisine Type</option>
-          <option>Traditional</option>
-          <option>Modern</option>
-          <option>Vegan</option>
-          <option>Buffet</option>
-        </select>
-        <button type="submit">Search Caterers</button>
-      </form>
-    </div>
-
-    <div class="tab-content hidden" id="music">
-      <h2>Search Music Options</h2>
-      <form>
-        <input type="text" placeholder="Location" />
-        <select>
-          <option>Type of Music</option>
-          <option>DJ</option>
-          <option>Live Band</option>
-          <option>String Quartet</option>
-          <option>Acoustic</option>
-        </select>
-        <button type="submit">Search Music</button>
-      </form>
-    </div>
-
-    <div class="tab-content hidden" id="entertainment">
-      <h2>Search Entertainment</h2>
-      <form>
-        <input type="text" placeholder="Location" />
-        <select>
-          <option>Type of Entertainment</option>
-          <option>Magician</option>
-          <option>Photo Booth</option>
-          <option>Dancers</option>
-          <option>Fireworks</option>
-        </select>
-        <button type="submit">Search Entertainment</button>
-      </form>
-    </div>
-
-    <div class="tab-content hidden" id="photography">
-      <h2>Search Photographers</h2>
-      <form>
-        <input type="text" placeholder="Location" />
-        <select>
-          <option>Photography Style</option>
-          <option>Traditional</option>
-          <option>Documentary</option>
-          <option>Fine Art</option>
-          <option>Editorial</option>
-        </select>
-        <button type="submit">Search Photography</button>
-      </form>
-    </div>
+  <div class="footer">
+    &copy; 2025 Wedding Compare. All rights reserved.
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
