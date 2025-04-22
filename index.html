@@ -2,63 +2,109 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wedding Venue Finder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wedding Compare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="header">
+    <h1>Wedding Compare</h1>
+    <p class="tagline">Plan your dream wedding with ease and elegance</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-button active" data-tab="venues">Venues</button>
+    <button class="tab-button" data-tab="caterers">Caterers</button>
+    <button class="tab-button" data-tab="music">Music</button>
+    <button class="tab-button" data-tab="entertainment">Entertainment</button>
+    <button class="tab-button" data-tab="photography">Photography</button>
+  </div>
+
   <div class="container">
-    <h1>Find Your Perfect Wedding Venue 💒</h1>
-
-    <form id="searchForm">
-      <input type="text" id="locationInput" placeholder="Search by location..." />
-
-      <button type="button" id="toggleAdvanced">Advanced Search</button>
-
-      <div id="advancedSearch" class="hidden">
-        <label>
-          Number of Guests:
-          <input type="number" id="guestsInput" min="1" />
-        </label>
-        <label>
-          Additional Evening Guests:
-          <input type="number" id="eveningGuestsInput" min="0" />
-        </label>
-        <label>
-          Catering Required:
-          <select id="cateringInput">
-            <option value="">Any</option>
-            <option value="yes">Yes</option>
-            <option value="no">No</option>
-          </select>
-        </label>
-        <label>
-          Type of Venue:
-          <select id="venueTypeInput">
-            <option value="">Any</option>
-            <option value="barn">Barn</option>
-            <option value="town hall">Town Hall</option>
-            <option value="hotel">Hotel</option>
-            <option value="castle">Castle</option>
-            <option value="seaside">Seaside</option>
-            <option value="farmhouse">Farmhouse</option>
-          </select>
-        </label>
-      </div>
-
-      <button type="submit">Search</button>
-    </form>
-
-    <div class="sort-options">
-      <label for="sortPrice">Sort by Price:</label>
-      <select id="sortPrice">
-        <option value="default">Default</option>
-        <option value="asc">Low to High</option>
-        <option value="desc">High to Low</option>
-      </select>
+    <div class="tab-content" id="venues">
+      <h2>Search Wedding Venues</h2>
+      <form>
+        <input type="text" placeholder="Location" />
+        <input type="number" placeholder="Number of Guests" />
+        <input type="number" placeholder="Evening Guests" />
+        <select>
+          <option>Catering Required?</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <select>
+          <option>Venue Type</option>
+          <option>Barn</option>
+          <option>Town Hall</option>
+          <option>Hotel</option>
+          <option>Castle</option>
+          <option>Seaside</option>
+          <option>Farmhouse</option>
+        </select>
+        <button type="submit">Search Venues</button>
+      </form>
     </div>
 
-    <div id="results"></div>
+    <div class="tab-content hidden" id="caterers">
+      <h2>Search Caterers</h2>
+      <form>
+        <input type="text" placeholder="Location" />
+        <select>
+          <option>Cuisine Type</option>
+          <option>Traditional</option>
+          <option>Modern</option>
+          <option>Vegan</option>
+          <option>Buffet</option>
+        </select>
+        <button type="submit">Search Caterers</button>
+      </form>
+    </div>
+
+    <div class="tab-content hidden" id="music">
+      <h2>Search Music Options</h2>
+      <form>
+        <input type="text" placeholder="Location" />
+        <select>
+          <option>Type of Music</option>
+          <option>DJ</option>
+          <option>Live Band</option>
+          <option>String Quartet</option>
+          <option>Acoustic</option>
+        </select>
+        <button type="submit">Search Music</button>
+      </form>
+    </div>
+
+    <div class="tab-content hidden" id="entertainment">
+      <h2>Search Entertainment</h2>
+      <form>
+        <input type="text" placeholder="Location" />
+        <select>
+          <option>Type of Entertainment</option>
+          <option>Magician</option>
+          <option>Photo Booth</option>
+          <option>Dancers</option>
+          <option>Fireworks</option>
+        </select>
+        <button type="submit">Search Entertainment</button>
+      </form>
+    </div>
+
+    <div class="tab-content hidden" id="photography">
+      <h2>Search Photographers</h2>
+      <form>
+        <input type="text" placeholder="Location" />
+        <select>
+          <option>Photography Style</option>
+          <option>Traditional</option>
+          <option>Documentary</option>
+          <option>Fine Art</option>
+          <option>Editorial</option>
+        </select>
+        <button type="submit">Search Photography</button>
+      </form>
+    </div>
   </div>
 
   <script src="script.js"></script>
