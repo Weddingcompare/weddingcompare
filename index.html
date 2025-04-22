@@ -25,32 +25,67 @@
     <div id="venues" class="tab-content">
       <form>
         <input type="text" placeholder="Search location..." />
-        <input type="number" placeholder="Number of guests" />
-        <input type="number" placeholder="Additional evening guests" />
-        <select>
-          <option>Catering required?</option>
-          <option>Yes</option>
-          <option>No</option>
-        </select>
-        <select>
-          <option>Type of venue</option>
-          <option>Barn</option>
-          <option>Town Hall</option>
-          <option>Castle</option>
-          <option>Garden</option>
-          <option>Beach</option>
-          <option>Hotel</option>
-          <option>Winery</option>
-          <option>Country House</option>
-        </select>
+        <button type="button" class="toggle-advanced">Advanced Search</button>
+        <div class="advanced hidden">
+          <input type="number" placeholder="Number of guests" />
+          <input type="number" placeholder="Additional evening guests" />
+          <select>
+            <option>Catering required?</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+          <select>
+            <option>Type of venue</option>
+            <option>Barn</option>
+            <option>Town Hall</option>
+            <option>Castle</option>
+            <option>Garden</option>
+            <option>Beach</option>
+            <option>Hotel</option>
+            <option>Winery</option>
+            <option>Country House</option>
+          </select>
+          <input type="date" placeholder="Wedding date" />
+        </div>
         <button type="submit">Search</button>
       </form>
     </div>
 
-    <div id="caterers" class="tab-content hidden"><form><input type="text" placeholder="Search caterers by location" /><button>Search</button></form></div>
-    <div id="music" class="tab-content hidden"><form><input type="text" placeholder="Search music by location" /><button>Search</button></form></div>
-    <div id="entertainment" class="tab-content hidden"><form><input type="text" placeholder="Search entertainment by location" /><button>Search</button></form></div>
-    <div id="photography" class="tab-content hidden"><form><input type="text" placeholder="Search photography by location" /><button>Search</button></form></div>
+    <div id="caterers" class="tab-content hidden">
+      <form>
+        <input type="text" placeholder="Search location..." />
+        <button type="button" class="toggle-advanced">Advanced Search</button>
+        <div class="advanced hidden"></div>
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+    <div id="music" class="tab-content hidden">
+      <form>
+        <input type="text" placeholder="Search location..." />
+        <button type="button" class="toggle-advanced">Advanced Search</button>
+        <div class="advanced hidden"></div>
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+    <div id="entertainment" class="tab-content hidden">
+      <form>
+        <input type="text" placeholder="Search location..." />
+        <button type="button" class="toggle-advanced">Advanced Search</button>
+        <div class="advanced hidden"></div>
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+    <div id="photography" class="tab-content hidden">
+      <form>
+        <input type="text" placeholder="Search location..." />
+        <button type="button" class="toggle-advanced">Advanced Search</button>
+        <div class="advanced hidden"></div>
+        <button type="submit">Search</button>
+      </form>
+    </div>
   </div>
 
   <script src="script.js"></script>

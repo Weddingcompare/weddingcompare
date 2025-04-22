@@ -6,3 +6,14 @@ document.querySelectorAll('.tab-button').forEach(button => {
     document.getElementById(button.dataset.tab).classList.remove('hidden');
   });
 });
+
+document.querySelectorAll('.toggle-advanced').forEach(button => {
+  button.addEventListener('click', () => {
+    const advancedSection = button.nextElementSibling;
+    if (advancedSection.classList.contains('hidden')) {
+      advancedSection.classList.remove('hidden');
+    } else {
+      advancedSection.classList.add('hidden');
+    }
+  });
+});
