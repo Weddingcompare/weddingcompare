@@ -14,8 +14,9 @@
   </div>
 
   <div class="container">
-    <form id="venueSearchForm">
+    <form id="venueSearchForm" autocomplete="off">
       <input type="text" id="venueLocation" placeholder="Search location..." required />
+      <div id="autocomplete-list" class="autocomplete-list"></div>
       <input type="number" id="venueDayGuests" placeholder="Number of day guests" required />
       <input type="number" id="venueEveningGuests" placeholder="Number of evening guests" required />
       <button type="submit">Search</button>
