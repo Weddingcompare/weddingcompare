@@ -62,8 +62,7 @@ document.getElementById('venueSearchForm').addEventListener('submit', async func
         div.className = 'venue-card';
         div.innerHTML = `
           <div class="gallery-container">
-            ${v.gallery.map(img => `<img src="${img}" alt="venue image">`).join('')}
-          </div>
+            <img src="${v.gallery[0]}" alt="venue image">
           <div class="venue-details">
             <h3>${v.name}</h3>
             <p><strong>Location:</strong> ${v.location} (${v.distance} miles)</p>
