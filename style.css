@@ -1,27 +1,40 @@
 body {
-  font-family: sans-serif;
-  background: white;
-  color: black;
+  font-family: 'Playfair Display', serif;
+  background: #fff;
+  color: #000;
+  margin: 0;
   padding: 20px;
 }
-.hidden { display: none; }
+.header {
+  text-align: center;
+}
+.hidden {
+  display: none;
+}
+.container {
+  max-width: 1000px;
+  margin: auto;
+}
 .venue-result {
-  margin-top: 20px;
-  padding: 20px;
-  border: 1px solid #ddd;
   display: flex;
+  flex-direction: row;
   gap: 20px;
+  padding: 20px;
+  background: #fafafa;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 .gallery-container {
   display: flex;
   flex-direction: row;
   gap: 10px;
   overflow-x: auto;
-  max-width: 200px;
+  max-width: 300px;
 }
 .slider-img {
-  width: 120px;
-  height: 90px;
+  width: 140px;
+  height: 100px;
   object-fit: cover;
   border-radius: 8px;
 }
