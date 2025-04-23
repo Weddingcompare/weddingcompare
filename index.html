@@ -1,4 +1,4 @@
-{
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,9 +23,10 @@
       <option value="500">Within 500 miles</option>
     </select>
     <button type="submit">Search</button>
+    <button type="button" id="toggleAdvanced">Advanced Search</button>
     <div id="advancedSearch" class="hidden">
       <input type="number" id="venueDayGuests" placeholder="Number of day guests">
-      <input type="number" id="venueEveningGuests" placeholder="Evening guests">
+      <input type="number" id="venueEveningGuests" placeholder="Number of evening guests">
     </div>
     <br><br>
     <label for="sortFilter"><strong>Sort by:</strong></label>
@@ -38,7 +39,11 @@
 
   <div id="venueResults"></div>
 
+  <script>
+    document.getElementById('toggleAdvanced').addEventListener('click', () => {
+      document.getElementById('advancedSearch').classList.toggle('hidden');
+    });
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
-}

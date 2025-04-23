@@ -2,38 +2,64 @@
 body {
   font-family: 'Georgia', serif;
   background: #fff;
-  color: #000;
+  color: #333;
   text-align: center;
   margin: 0;
   padding: 20px;
 }
 
-.tagline {
-  font-style: italic;
-  font-size: 1.2em;
-  margin-bottom: 20px;
+h1 {
+  font-size: 3em;
+  margin-bottom: 0.2em;
+  font-family: 'Times New Roman', serif;
 }
 
-form {
+.tagline {
+  font-style: italic;
+  font-size: 1.3em;
   margin-bottom: 30px;
 }
 
+form {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 12px;
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+input, select, button {
+  margin: 8px 5px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #dedede;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
 #venueResults {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .venue-card {
-  border: 1px solid #ccc;
+  border: 1px solid #ddd;
   background: #fff;
-  padding: 20px;
-  margin: 20px auto;
+  padding: 25px;
+  margin: 25px auto;
   border-radius: 12px;
   text-align: left;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 6px 10px rgba(0,0,0,0.05);
 }
 
-.venue-details {
-  font-size: 1em;
-  line-height: 1.6;
+.venue-details p {
+  margin: 8px 0;
 }
