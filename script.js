@@ -13,49 +13,57 @@ function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
 
 document.getElementById('venueSearchForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  const location = document.getElementById('venueLocation').value.toLowerCase();
+  const location = document.getElementById('venueLocation').value;
   const radius = parseFloat(document.getElementById('searchRadius').value);
   const dayGuests = parseInt(document.getElementById('venueDayGuests').value) || 0;
   const eveningGuests = parseInt(document.getElementById('venueEveningGuests').value) || 0;
 
-  fetch('venues.json')
-    .then(res => res.json())
-    .then(venues => {
-      const searchCoords = { lat: 51.4545, lng: -2.5879 }; // Use dummy location (Bristol) for now
+  fetch(`https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(location)}&key=267388b88dfa43eba539412fef6151a9`)
+    .then(response => response.json())
+    .then(data => {
+      if (!data.results.length) {
+        alert('Location not found.');
+        return;
+      }
+      const searchCoords = data.results[0].geometry;
 
-      let results = venues.map(v => {
-        const distance = getDistanceFromLatLonInMiles(
-          searchCoords.lat, searchCoords.lng,
-          v.coordinates.lat, v.coordinates.lng
-        );
+      fetch('venues.json')
+        .then(res => res.json())
+        .then(venues => {
+          let results = venues.map(v => {
+            const distance = getDistanceFromLatLonInMiles(
+              searchCoords.lat, searchCoords.lng,
+              v.coordinates.lat, v.coordinates.lng
+            );
 
-        const estimatedCost =
-          v.pricing.venueHire +
-          dayGuests * (v.pricing.mealPerGuest + v.pricing.drinksPerGuest) +
-          eveningGuests * v.pricing.eveningFoodPerGuest +
-          v.pricing.extras.reduce((sum, item) => sum + item.price, 0);
+            const estimatedCost =
+              v.pricing.venueHire +
+              dayGuests * (v.pricing.mealPerGuest + v.pricing.drinksPerGuest) +
+              eveningGuests * v.pricing.eveningFoodPerGuest +
+              v.pricing.extras.reduce((sum, item) => sum + item.price, 0);
 
-        return {
-          ...v,
-          distance: distance.toFixed(1),
-          estimatedCost: estimatedCost.toFixed(2)
-        };
-      });
+            return {
+              ...v,
+              distance: distance.toFixed(1),
+              estimatedCost: estimatedCost.toFixed(2)
+            };
+          });
 
-      results = results.filter(v => parseFloat(v.distance) <= radius);
-      displayVenues(results);
+          results = results.filter(v => parseFloat(v.distance) <= radius);
+          displayVenues(results);
 
-      document.getElementById('sortFilter').addEventListener('change', function() {
-        const sortBy = this.value;
-        if (sortBy === 'price-asc') {
-          results.sort((a, b) => parseFloat(a.estimatedCost) - parseFloat(b.estimatedCost));
-        } else if (sortBy === 'price-desc') {
-          results.sort((a, b) => parseFloat(b.estimatedCost) - parseFloat(a.estimatedCost));
-        } else if (sortBy === 'distance') {
-          results.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance));
-        }
-        displayVenues(results);
-      });
+          document.getElementById('sortFilter').addEventListener('change', function() {
+            const sortBy = this.value;
+            if (sortBy === 'price-asc') {
+              results.sort((a, b) => parseFloat(a.estimatedCost) - parseFloat(b.estimatedCost));
+            } else if (sortBy === 'price-desc') {
+              results.sort((a, b) => parseFloat(b.estimatedCost) - parseFloat(a.estimatedCost));
+            } else if (sortBy === 'distance') {
+              results.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance));
+            }
+            displayVenues(results);
+          });
+        });
     });
 });
 
@@ -72,6 +80,7 @@ function displayVenues(venues) {
         <p><strong>Distance:</strong> ${v.distance} miles from search location</p>
         <p><strong>Type:</strong> ${v.type}</p>
         <p><strong>Guest Capacity:</strong> Min ${v.guests.minDay}, Max ${v.guests.maxDay} (Day), Max ${v.guests.maxEvening} (Evening)</p>
+        <p><strong>Includes:</strong> ${(v.pricing.inclusions || '2 canapés, 1/2 bottle wine, welcome drinks')}</p>
         <p><strong>Price per guest:</strong> £${(v.pricing.mealPerGuest + v.pricing.drinksPerGuest).toFixed(2)} (meal + drinks)</p>
         <p><strong>Evening guest cost:</strong> £${v.pricing.eveningFoodPerGuest.toFixed(2)}</p>
         <p><strong>Extras:</strong> ${v.pricing.extras.map(e => e.item + ': £' + e.price.toFixed(2)).join(', ')}</p>
