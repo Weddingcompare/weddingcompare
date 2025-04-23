@@ -15,19 +15,26 @@ document.getElementById('toggleAdvanced').addEventListener('click', () => {
   document.getElementById('advancedSearch').classList.toggle('hidden');
 });
 
-document.getElementById('venueSearchForm').addEventListener('submit', function(e) {
+document.getElementById('venueSearchForm').addEventListener('submit', async function(e) {
   e.preventDefault();
-  const location = document.getElementById('venueLocation').value.toLowerCase();
+  const locationInput = document.getElementById('venueLocation').value;
   const radius = parseFloat(document.getElementById('searchRadius').value);
   const dayGuests = parseInt(document.getElementById('venueDayGuests').value) || 0;
   const eveningGuests = parseInt(document.getElementById('venueEveningGuests').value) || 0;
 
+  const geoResponse = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(locationInput)}&key=267388b88dfa43eba539412fef6151a9`);
+  const geoData = await geoResponse.json();
+
+  if (!geoData.results.length) {
+    alert("Location not found. Please enter a valid location.");
+    return;
+  }
+
+  const searchCoords = geoData.results[0].geometry;
+
   fetch('venues.json')
     .then(res => res.json())
     .then(venues => {
-      // Dummy coordinates for search location
-      const searchCoords = { lat: 51.38, lng: -2.6 }; // e.g. Bristol
-
       let results = venues.map(v => {
         const distance = getDistanceFromLatLonInMiles(
           searchCoords.lat, searchCoords.lng,
@@ -45,7 +52,6 @@ document.getElementById('venueSearchForm').addEventListener('submit', function(e
       });
 
       results = results.filter(v => parseFloat(v.distance) <= radius);
-
       results.sort((a, b) => parseFloat(a.estimatedCost) - parseFloat(b.estimatedCost));
 
       const container = document.getElementById('venueResults');
