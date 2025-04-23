@@ -31,10 +31,66 @@
       ]
     },
     "gallery": [
+      "images-final/folly_farm_0_0.jpg",
+      "images-final/folly_farm_10_0.jpg",
+      "images-final/folly_farm_11_0.jpg",
+      "images-final/folly_farm_12_0.jpg",
       "images-final/folly_farm_12_1.jpg",
+      "images-final/folly_farm_12_8.jpg",
+      "images-final/folly_farm_13_0.jpg",
+      "images-final/folly_farm_14_0.jpg",
+      "images-final/folly_farm_15_0.jpg",
+      "images-final/folly_farm_16_0.jpg",
+      "images-final/folly_farm_16_1.jpg",
+      "images-final/folly_farm_1_0.jpg",
       "images-final/folly_farm_1_1.jpg",
+      "images-final/folly_farm_2_0.jpg",
       "images-final/folly_farm_2_1.jpg",
+      "images-final/folly_farm_3_0.jpg",
+      "images-final/folly_farm_4_0.jpg",
+      "images-final/folly_farm_5_0.jpg",
       "images-final/folly_farm_5_1.jpg",
-    ]
+      "images-final/folly_farm_6_0.jpg",
+      "images-final/folly_farm_7_0.jpg",
+      "images-final/folly_farm_8_0.jpg",
+      "images-final/folly_farm_9_0.jpg"
+    ],
+    "coordinates": {
+      "lat": 51.345,
+      "lng": -2.579
+    }
+  },
+  {
+    "name": "Meadow View Barn",
+    "location": "Cheddar, Somerset",
+    "type": "Barn",
+    "coordinates": {
+      "lat": 51.276,
+      "lng": -2.777
+    },
+    "cateringProvided": false,
+    "contact": {
+      "email": "info@meadowviewbarn.co.uk",
+      "phone": "01934 123456",
+      "website": "https://www.meadowviewbarn.co.uk"
+    },
+    "guests": {
+      "minDay": 40,
+      "maxDay": 90,
+      "maxEvening": 120
+    },
+    "pricing": {
+      "venueHire": 7800,
+      "mealPerGuest": 40.0,
+      "drinksPerGuest": 20.0,
+      "eveningFoodPerGuest": 5.5,
+      "extras": [
+        {
+          "item": "Cutlery & tableware",
+          "price": 100.0
+        }
+      ]
+    },
+    "gallery": []
   }
 ]
