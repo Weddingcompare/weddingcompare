@@ -2,16 +2,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Wedding Compare</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <style>
-    #advancedSearch { display: none; }
+    body {
+      background-color: #fdf8f4;
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
     .container {
       max-width: 900px;
       margin: auto;
-      font-family: 'Georgia', serif;
-      background-color: #fdf8f4;
       padding: 2rem;
       text-align: center;
     }
@@ -23,20 +27,27 @@
       font-style: italic;
       font-size: 1.2rem;
       color: #777;
+      margin-bottom: 1.5rem;
     }
     input, select, button {
       padding: 0.6rem;
       margin: 0.5rem;
       font-size: 1rem;
     }
-    place-autocomplete {
-      display: block;
-      margin: 0 auto 1rem auto;
-      max-width: 600px;
-      width: 100%;
+    .advanced-toggle {
+      cursor: pointer;
+      color: #337ab7;
+      text-decoration: underline;
+      font-size: 0.95rem;
+      margin-top: 1rem;
+      display: inline-block;
+    }
+    #advancedSearch {
+      display: none;
+      margin-top: 1rem;
     }
     .sort-controls {
-      margin: 1rem 0;
+      margin: 1.5rem 0;
     }
     .venue {
       border-top: 1px solid #ccc;
@@ -44,11 +55,8 @@
       margin-top: 1rem;
       text-align: left;
     }
-    .advanced-toggle {
-      cursor: pointer;
-      color: #337ab7;
-      text-decoration: underline;
-      font-size: 0.95rem;
+    #locationContainer {
+      margin-bottom: 1rem;
     }
   </style>
   <script type="module" src="https://www.gstatic.com/maps-platform/v1/place_autocomplete.js"></script>
@@ -59,7 +67,9 @@
     <p class="tagline">Find your perfect wedding venue</p>
 
     <form id="venueSearchForm">
-      <place-autocomplete id="autocomplete" input-placeholder="Enter a location"></place-autocomplete>
+      <div id="locationContainer">
+        <place-autocomplete id="autocomplete" input-placeholder="Search your location"></place-autocomplete>
+      </div>
 
       <select id="searchRadius">
         <option value="1">Within 1 mile</option>
@@ -72,7 +82,7 @@
         <option value="500">Within 500 miles</option>
       </select>
 
-      <div class="advanced-toggle" onclick="toggleAdvancedSearch()">Show Advanced Search</div>
+      <div class="advanced-toggle" onclick="toggleAdvancedSearch()">Advanced Search</div>
       <div id="advancedSearch">
         <input type="number" id="venueDayGuests" placeholder="Number of day guests">
         <input type="number" id="venueEveningGuests" placeholder="Additional evening guests">
@@ -109,6 +119,7 @@
             lat: place.geometry.location.lat,
             lng: place.geometry.location.lng,
           };
+          console.log("Selected coordinates:", selectedPlaceCoords);
         }
       });
     });
