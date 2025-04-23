@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Wedding Compare</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
   <style>
     #advancedSearch { display: none; }
     .container {
@@ -56,7 +56,7 @@
     <p class="tagline">Find your perfect wedding venue</p>
 
     <form id="venueSearchForm">
-      <input type="text" id="venueLocation" placeholder="Enter a location" required />
+      <gmpx-place-autocomplete id="venueLocation" style="width:100%; max-width:600px;" placeholder="Enter a location"></gmpx-place-autocomplete>
       <select id="searchRadius">
         <option value="1">Within 1 mile</option>
         <option value="3">Within 3 miles</option>
@@ -91,36 +91,31 @@
   </div>
 
   <script>
-    let autocomplete;
-    let selectedPlaceCoords = null;
-
-    function initAutocomplete() {
-      const input = document.getElementById('venueLocation');
-      autocomplete = new google.maps.places.Autocomplete(input, {
-        types: ['(cities)'],
-        componentRestrictions: { country: 'gb' }
-      });
-
-      autocomplete.addListener('place_changed', function () {
-        const place = autocomplete.getPlace();
-        if (place.geometry) {
-          selectedPlaceCoords = {
-            lat: place.geometry.location.lat(),
-            lng: place.geometry.location.lng()
-          };
-        } else {
-          selectedPlaceCoords = null;
-        }
-      });
-    }
-
     function toggleAdvancedSearch() {
       const adv = document.getElementById('advancedSearch');
       adv.style.display = adv.style.display === 'none' ? 'block' : 'none';
     }
+
+    // Extract coordinates from the new autocomplete
+    const locationInput = document.getElementById("venueLocation");
+    let selectedPlaceCoords = null;
+
+    window.addEventListener("gmpx-placeautocomplete-placeview", (event) => {
+      const place = event.detail.place;
+      if (place && place.location) {
+        selectedPlaceCoords = {
+          lat: place.location.lat,
+          lng: place.location.lng,
+        };
+      } else {
+        selectedPlaceCoords = null;
+      }
+    });
   </script>
 
   <script src="script.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE&libraries=places&callback=initAutocomplete" async defer></script>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE&libraries=maps,places"></script>
+  <script async defer src="https://www.gstatic.com/maps-platform/js/v1/place_autocomplete.js"></script>
 </body>
 </html>
