@@ -1,6 +1,6 @@
 
 function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
-  const R = 3958.8; // Radius of the Earth in miles
+  const R = 3958.8;
   const dLat = (lat2 - lat1) * Math.PI / 180;
   const dLon = (lon2 - lon1) * Math.PI / 180;
   const a =
@@ -11,92 +11,73 @@ function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
   return R * c;
 }
 
-document.getElementById('toggleAdvanced').addEventListener('click', () => {
-  document.getElementById('advancedSearch').classList.toggle('hidden');
-});
-
-document.getElementById('venueSearchForm').addEventListener('submit', async function(e) {
+document.getElementById('venueSearchForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  const locationInput = document.getElementById('venueLocation').value;
+  const location = document.getElementById('venueLocation').value.toLowerCase();
   const radius = parseFloat(document.getElementById('searchRadius').value);
   const dayGuests = parseInt(document.getElementById('venueDayGuests').value) || 0;
   const eveningGuests = parseInt(document.getElementById('venueEveningGuests').value) || 0;
 
-  const geoResponse = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(locationInput)}&key=267388b88dfa43eba539412fef6151a9`);
-  const geoData = await geoResponse.json();
-
-  if (!geoData.results.length) {
-    alert("Location not found. Please enter a valid location.");
-    return;
-  }
-
-  const searchCoords = geoData.results[0].geometry;
-
   fetch('venues.json')
     .then(res => res.json())
     .then(venues => {
+      const searchCoords = { lat: 51.4545, lng: -2.5879 }; // Use dummy location (Bristol) for now
+
       let results = venues.map(v => {
         const distance = getDistanceFromLatLonInMiles(
           searchCoords.lat, searchCoords.lng,
           v.coordinates.lat, v.coordinates.lng
         );
 
-        const estimatedCost = (
+        const estimatedCost =
           v.pricing.venueHire +
           dayGuests * (v.pricing.mealPerGuest + v.pricing.drinksPerGuest) +
           eveningGuests * v.pricing.eveningFoodPerGuest +
-          v.pricing.extras.reduce((sum, item) => sum + item.price, 0)
-        );
+          v.pricing.extras.reduce((sum, item) => sum + item.price, 0);
 
-        return { ...v, distance: distance.toFixed(1), estimatedCost: estimatedCost.toFixed(2) };
+        return {
+          ...v,
+          distance: distance.toFixed(1),
+          estimatedCost: estimatedCost.toFixed(2)
+        };
       });
 
       results = results.filter(v => parseFloat(v.distance) <= radius);
-      results.sort((a, b) => parseFloat(a.estimatedCost) - parseFloat(b.estimatedCost));
+      displayVenues(results);
 
-      const container = document.getElementById('venueResults');
-      container.innerHTML = '';
-
-      results.forEach(v => {
-        const div = document.createElement('div');
-        div.className = 'venue-card';
-        div.innerHTML = `
-          <div class="gallery-container">
-            <img src="${v.gallery[0]}" alt="venue image">
-          <div class="venue-details">
-            <h3>${v.name}</h3>
-            <p><strong>Location:</strong> ${v.location} (${v.distance} miles)</p>
-            <p><strong>Type:</strong> ${v.type}</p>
-            <p><strong>Guest capacity:</strong> Min ${v.guests.minDay}, Max ${v.guests.maxDay} (Day), Max ${v.guests.maxEvening} (Evening)</p>
-            <p><strong>Price per guest:</strong> £${(v.pricing.mealPerGuest + v.pricing.drinksPerGuest).toFixed(2)} (meal + drinks)</p>
-            <p><strong>Evening guest cost:</strong> £${v.pricing.eveningFoodPerGuest.toFixed(2)} (food)</p>
-            <p><strong>Extras:</strong> ${v.pricing.extras.map(e => e.item + ': £' + e.price.toFixed(2)).join(', ')}</p>
-            <p><strong>Estimated Total:</strong> £${v.estimatedCost}</p>
-            <p><a href="${v.contact.website}" target="_blank">Visit website</a></p>
-          </div>`;
-        container.appendChild(div);
+      document.getElementById('sortFilter').addEventListener('change', function() {
+        const sortBy = this.value;
+        if (sortBy === 'price-asc') {
+          results.sort((a, b) => parseFloat(a.estimatedCost) - parseFloat(b.estimatedCost));
+        } else if (sortBy === 'price-desc') {
+          results.sort((a, b) => parseFloat(b.estimatedCost) - parseFloat(a.estimatedCost));
+        } else if (sortBy === 'distance') {
+          results.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance));
+        }
+        displayVenues(results);
       });
     });
 });
 
-
-
-document.getElementById('sortFilter').addEventListener('change', function () {
-  const sortBy = this.value;
+function displayVenues(venues) {
   const container = document.getElementById('venueResults');
-  const children = Array.from(container.children);
-  const parsed = children.map(div => ({
-    div,
-    cost: parseFloat(div.querySelector('.venue-details').dataset.cost),
-    distance: parseFloat(div.querySelector('.venue-details').dataset.distance)
-  }));
-  if (sortBy === 'price-asc') {
-    parsed.sort((a, b) => a.cost - b.cost);
-  } else if (sortBy === 'price-desc') {
-    parsed.sort((a, b) => b.cost - a.cost);
-  } else if (sortBy === 'distance') {
-    parsed.sort((a, b) => a.distance - b.distance);
-  }
   container.innerHTML = '';
-  parsed.forEach(p => container.appendChild(p.div));
-});
+  venues.forEach(v => {
+    const div = document.createElement('div');
+    div.className = 'venue-card';
+    div.innerHTML = `
+      <div class="venue-details">
+        <h3>${v.name}</h3>
+        <p><strong>Location:</strong> ${v.location}</p>
+        <p><strong>Distance:</strong> ${v.distance} miles from search location</p>
+        <p><strong>Type:</strong> ${v.type}</p>
+        <p><strong>Guest Capacity:</strong> Min ${v.guests.minDay}, Max ${v.guests.maxDay} (Day), Max ${v.guests.maxEvening} (Evening)</p>
+        <p><strong>Price per guest:</strong> £${(v.pricing.mealPerGuest + v.pricing.drinksPerGuest).toFixed(2)} (meal + drinks)</p>
+        <p><strong>Evening guest cost:</strong> £${v.pricing.eveningFoodPerGuest.toFixed(2)}</p>
+        <p><strong>Extras:</strong> ${v.pricing.extras.map(e => e.item + ': £' + e.price.toFixed(2)).join(', ')}</p>
+        <p><strong>Estimated Total:</strong> £${v.estimatedCost}</p>
+        <p><strong>Website:</strong> <a href="${v.contact.website}" target="_blank">${v.contact.website}</a></p>
+      </div>`;
+    container.appendChild(div);
+  });
+}
