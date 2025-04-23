@@ -2,59 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Wedding Compare</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    #advancedSearch { display: none; }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      font-family: 'Georgia', serif;
-      background: #fff;
-      padding: 2rem;
-      text-align: center;
-    }
-    body {
-      background: #fdfdfd;
-      margin: 0;
-      padding: 0;
-    }
-    input, select, button {
-      padding: 0.6rem;
-      margin: 0.5rem;
-      font-size: 1rem;
-    }
-    .tagline {
-      font-style: italic;
-      font-size: 1.2rem;
-      color: #777;
-    }
-    .sort-controls {
-      margin-top: 1.5rem;
-    }
-    .venue-card {
-      text-align: left;
-      border-top: 1px solid #ccc;
-      margin-top: 1rem;
-      padding-top: 1rem;
-    }
-    .venue-details {
-      padding: 1rem;
-    }
-    .advanced-toggle {
-      cursor: pointer;
-      color: #337ab7;
-      text-decoration: underline;
-      font-size: 0.95rem;
-    }
-    place-autocomplete input {
-      width: 100%;
-      padding: 0.6rem;
-      font-size: 1rem;
-    }
-  </style>
-  <script type="module" src="https://www.gstatic.com/maps-platform/v1/place_autocomplete.js"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
@@ -62,61 +12,40 @@
     <p class="tagline">Find your perfect wedding venue</p>
 
     <form id="venueSearchForm">
-      <place-autocomplete id="autocomplete" style="max-width:600px;" input-placeholder="Enter a location"></place-autocomplete>
+      <input type="text" id="venueLocation" placeholder="Enter location" required>
       <select id="searchRadius">
         <option value="1">Within 1 mile</option>
         <option value="3">Within 3 miles</option>
         <option value="5">Within 5 miles</option>
         <option value="10">Within 10 miles</option>
-        <option value="20">Within 20 miles</option>
+        <option value="25">Within 25 miles</option>
         <option value="50">Within 50 miles</option>
         <option value="100">Within 100 miles</option>
         <option value="500">Within 500 miles</option>
       </select>
-
-      <div class="advanced-toggle" onclick="toggleAdvancedSearch()">Show Advanced Search</div>
+      <button type="button" onclick="toggleAdvancedSearch()">Advanced Search</button>
       <div id="advancedSearch">
-        <label>Number of day guests: <input type="number" id="venueDayGuests" min="0" /></label>
-        <label>Evening guests: <input type="number" id="venueEveningGuests" min="0" /></label>
+        <input type="number" id="venueDayGuests" placeholder="Number of day guests">
+        <input type="number" id="venueEveningGuests" placeholder="Additional evening guests">
       </div>
-
-      <button type="submit">Search</button>
+      <br><button type="submit">Search</button>
     </form>
 
     <div class="sort-controls">
-      <label>Sort by:
-        <select id="sortFilter">
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="distance">Distance</option>
-        </select>
-      </label>
+      <label for="sortFilter">Sort by:</label>
+      <select id="sortFilter">
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="distance">Distance</option>
+      </select>
     </div>
 
     <div id="venueResults"></div>
   </div>
 
-  <script>
-    function toggleAdvancedSearch() {
-      const adv = document.getElementById('advancedSearch');
-      adv.style.display = adv.style.display === 'none' ? 'block' : 'none';
-    }
-
-    let selectedPlaceCoords = null;
-    window.addEventListener("DOMContentLoaded", () => {
-      const autocompleteElement = document.querySelector("place-autocomplete");
-      autocompleteElement.addEventListener("gmp-placechange", (event) => {
-        const place = event.detail;
-        if (place && place.geometry && place.geometry.location) {
-          selectedPlaceCoords = {
-            lat: place.geometry.location.lat,
-            lng: place.geometry.location.lng,
-          };
-        }
-      });
-    });
-  </script>
-
   <script src="script.js"></script>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE&libraries=places&callback=initAutocomplete"
+    defer></script>
 </body>
 </html>
