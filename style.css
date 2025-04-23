@@ -1,83 +1,39 @@
+
 body {
-  font-family: 'Playfair Display', serif;
-  background: #fffdf8;
-  color: #333;
-  margin: 0;
-  padding: 0;
-}
-header {
+  font-family: 'Georgia', serif;
+  background: #fff;
+  color: #000;
   text-align: center;
-  padding: 60px 20px 20px;
-}
-header h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 3.5em;
   margin: 0;
+  padding: 20px;
 }
+
 .tagline {
   font-style: italic;
-  color: #777;
   font-size: 1.2em;
+  margin-bottom: 20px;
 }
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px 20px;
-}
+
 form {
-  width: 100%;
-  max-width: 600px;
-  text-align: center;
+  margin-bottom: 30px;
 }
-input, select, button {
-  width: 100%;
-  margin: 10px 0;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  font-size: 1em;
-  font-family: 'Playfair Display', serif;
-}
-button {
-  background-color: #000;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-.hidden {
-  display: none;
-}
+
 #venueResults {
-  margin-top: 40px;
-  width: 100%;
   max-width: 900px;
+  margin: 0 auto;
 }
+
 .venue-card {
-  background: #ffffff;
-  margin-bottom: 40px;
+  border: 1px solid #ccc;
+  background: #fff;
   padding: 20px;
+  margin: 20px auto;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  display: flex;
-  gap: 20px;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
-.gallery-container {
-  flex: 1;
-  max-width: 250px;
-  overflow-x: auto;
-  display: flex;
-  gap: 10px;
-}
-.gallery-container img {
-  width: 200px;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
-}
+
 .venue-details {
-  flex: 2;
-}
-.venue-details h3 {
-  margin-top: 0;
+  font-size: 1em;
+  line-height: 1.6;
 }

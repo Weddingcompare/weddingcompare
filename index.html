@@ -1,40 +1,44 @@
+{
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Wedding Compare</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Wedding Compare</h1>
-    <p class="tagline">Find your perfect wedding venue</p>
-  </header>
-  <main>
-    <form id="venueSearchForm">
-      <input type="text" id="venueLocation" placeholder="Enter location..." required>
-      <select id="searchRadius">
-        <option value="0">Within 0 miles</option>
-        <option value="1">Within 1 mile</option>
-        <option value="3">Within 3 miles</option>
-        <option value="5">Within 5 miles</option>
-        <option value="10">Within 10 miles</option>
-        <option value="20">Within 20 miles</option>
-        <option value="50">Within 50 miles</option>
-        <option value="100">Within 100 miles</option>
-        <option value="500">Within 500 miles</option>
-      </select>
-      <button type="button" id="toggleAdvanced">Advanced Search</button>
-      <div id="advancedSearch" class="hidden">
-        <input type="number" id="venueDayGuests" placeholder="Number of day guests">
-        <input type="number" id="venueEveningGuests" placeholder="Number of evening guests">
-        <input type="date" id="weddingDate">
-      </div>
-      <button type="submit">Search</button>
-    </form>
-    <section id="venueResults"></section>
-  </main>
+  <h1>Wedding Compare</h1>
+  <p class="tagline">Find your perfect wedding venue</p>
+
+  <form id="venueSearchForm">
+    <input type="text" id="venueLocation" placeholder="Enter a location" required>
+    <select id="searchRadius">
+      <option value="1">Within 1 mile</option>
+      <option value="3">Within 3 miles</option>
+      <option value="5">Within 5 miles</option>
+      <option value="10">Within 10 miles</option>
+      <option value="20">Within 20 miles</option>
+      <option value="50">Within 50 miles</option>
+      <option value="100">Within 100 miles</option>
+      <option value="500">Within 500 miles</option>
+    </select>
+    <button type="submit">Search</button>
+    <div id="advancedSearch" class="hidden">
+      <input type="number" id="venueDayGuests" placeholder="Number of day guests">
+      <input type="number" id="venueEveningGuests" placeholder="Evening guests">
+    </div>
+    <br><br>
+    <label for="sortFilter"><strong>Sort by:</strong></label>
+    <select id="sortFilter">
+      <option value="price-asc">Price (Low to High)</option>
+      <option value="price-desc">Price (High to Low)</option>
+      <option value="distance">Distance from search location</option>
+    </select>
+  </form>
+
+  <div id="venueResults"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
+}
