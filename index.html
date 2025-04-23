@@ -5,6 +5,50 @@
   <meta charset="UTF-8">
   <title>Wedding Compare</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    #advancedSearch { display: none; }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      font-family: 'Georgia', serif;
+      background: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+    body {
+      background: #fdfdfd;
+      margin: 0;
+      padding: 0;
+    }
+    input, select, button {
+      padding: 0.6rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+    }
+    .tagline {
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #777;
+    }
+    .sort-controls {
+      margin-top: 1.5rem;
+    }
+    .venue-card {
+      text-align: left;
+      border-top: 1px solid #ccc;
+      margin-top: 1rem;
+      padding-top: 1rem;
+    }
+    .venue-details {
+      padding: 1rem;
+    }
+    .advanced-toggle {
+      cursor: pointer;
+      color: #337ab7;
+      text-decoration: underline;
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -23,10 +67,13 @@
         <option value="100">Within 100 miles</option>
         <option value="500">Within 500 miles</option>
       </select>
+
+      <div class="advanced-toggle" onclick="toggleAdvancedSearch()">Show Advanced Search</div>
       <div id="advancedSearch">
         <label>Number of day guests: <input type="number" id="venueDayGuests" min="0" /></label>
         <label>Evening guests: <input type="number" id="venueEveningGuests" min="0" /></label>
       </div>
+
       <button type="submit">Search</button>
     </form>
 
@@ -42,6 +89,13 @@
 
     <div id="venueResults"></div>
   </div>
+
+  <script>
+    function toggleAdvancedSearch() {
+      const adv = document.getElementById('advancedSearch');
+      adv.style.display = adv.style.display === 'none' ? 'block' : 'none';
+    }
+  </script>
 
   <script src="script.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE&libraries=places&callback=initAutocomplete" async defer></script>
