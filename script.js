@@ -78,3 +78,25 @@ document.getElementById('venueSearchForm').addEventListener('submit', async func
       });
     });
 });
+
+
+
+document.getElementById('sortFilter').addEventListener('change', function () {
+  const sortBy = this.value;
+  const container = document.getElementById('venueResults');
+  const children = Array.from(container.children);
+  const parsed = children.map(div => ({
+    div,
+    cost: parseFloat(div.querySelector('.venue-details').dataset.cost),
+    distance: parseFloat(div.querySelector('.venue-details').dataset.distance)
+  }));
+  if (sortBy === 'price-asc') {
+    parsed.sort((a, b) => a.cost - b.cost);
+  } else if (sortBy === 'price-desc') {
+    parsed.sort((a, b) => b.cost - a.cost);
+  } else if (sortBy === 'distance') {
+    parsed.sort((a, b) => a.distance - b.distance);
+  }
+  container.innerHTML = '';
+  parsed.forEach(p => container.appendChild(p.div));
+});
