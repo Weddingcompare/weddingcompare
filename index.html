@@ -48,7 +48,13 @@
       text-decoration: underline;
       font-size: 0.95rem;
     }
+    place-autocomplete input {
+      width: 100%;
+      padding: 0.6rem;
+      font-size: 1rem;
+    }
   </style>
+  <script type="module" src="https://www.gstatic.com/maps-platform/v1/place_autocomplete.js"></script>
 </head>
 <body>
   <div class="container">
@@ -56,7 +62,7 @@
     <p class="tagline">Find your perfect wedding venue</p>
 
     <form id="venueSearchForm">
-      <gmpx-place-autocomplete id="venueLocation" style="width:100%; max-width:600px;" placeholder="Enter a location"></gmpx-place-autocomplete>
+      <place-autocomplete id="autocomplete" style="max-width:600px;" input-placeholder="Enter a location"></place-autocomplete>
       <select id="searchRadius">
         <option value="1">Within 1 mile</option>
         <option value="3">Within 3 miles</option>
@@ -96,26 +102,21 @@
       adv.style.display = adv.style.display === 'none' ? 'block' : 'none';
     }
 
-    // Extract coordinates from the new autocomplete
-    const locationInput = document.getElementById("venueLocation");
     let selectedPlaceCoords = null;
-
-    window.addEventListener("gmpx-placeautocomplete-placeview", (event) => {
-      const place = event.detail.place;
-      if (place && place.location) {
-        selectedPlaceCoords = {
-          lat: place.location.lat,
-          lng: place.location.lng,
-        };
-      } else {
-        selectedPlaceCoords = null;
-      }
+    window.addEventListener("DOMContentLoaded", () => {
+      const autocompleteElement = document.querySelector("place-autocomplete");
+      autocompleteElement.addEventListener("gmp-placechange", (event) => {
+        const place = event.detail;
+        if (place && place.geometry && place.geometry.location) {
+          selectedPlaceCoords = {
+            lat: place.geometry.location.lat,
+            lng: place.geometry.location.lng,
+          };
+        }
+      });
     });
   </script>
 
   <script src="script.js"></script>
-  <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE&libraries=maps,places"></script>
-  <script async defer src="https://www.gstatic.com/maps-platform/js/v1/place_autocomplete.js"></script>
 </body>
 </html>
