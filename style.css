@@ -1,16 +1,15 @@
 body {
   font-family: 'Playfair Display', serif;
-  background-color: #fffaf8;
+  background: #fffdf8;
+  color: #333;
   margin: 0;
   padding: 0;
-  color: #222;
 }
-.header {
+header {
   text-align: center;
-  padding: 40px;
-  background: #ffffff;
+  padding: 60px 20px 20px;
 }
-.header h1 {
+header h1 {
   font-family: 'Great Vibes', cursive;
   font-size: 3.5em;
   margin: 0;
@@ -18,54 +17,67 @@ body {
 .tagline {
   font-style: italic;
   color: #777;
+  font-size: 1.2em;
 }
-.container {
-  max-width: 1000px;
-  margin: auto;
-  padding: 20px;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 20px;
 }
-form input, form button, form select {
+form {
   width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  max-width: 600px;
+  text-align: center;
 }
-form button {
+input, select, button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1em;
+  font-family: 'Playfair Display', serif;
+}
+button {
   background-color: #000;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 }
-.venue-result {
-  display: flex;
-  background: #fff;
+.hidden {
+  display: none;
+}
+#venueResults {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 900px;
+}
+.venue-card {
+  background: #ffffff;
+  margin-bottom: 40px;
+  padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  margin-top: 30px;
-  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  display: flex;
+  gap: 20px;
 }
 .gallery-container {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  gap: 10px;
+  max-width: 250px;
   overflow-x: auto;
-  max-width: 300px;
+  display: flex;
+  gap: 10px;
 }
 .gallery-container img {
-  width: 100%;
+  width: 200px;
   height: auto;
   border-radius: 10px;
   object-fit: cover;
 }
-.venue-info {
+.venue-details {
   flex: 2;
-  padding: 20px;
 }
-.venue-info h3 {
+.venue-details h3 {
   margin-top: 0;
-}
-.hidden {
-  display: none;
 }

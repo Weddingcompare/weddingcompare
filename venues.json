@@ -10,15 +10,21 @@
       "website": "https://www.follyfarm.org/weddings"
     },
     "guests": {
+      "minDay": 60,
       "maxDay": 100,
-      "maxEvening": 150,
-      "minTotal": 60
+      "maxEvening": 150
     },
     "pricing": {
       "venueHire": 9500,
       "mealPerGuest": 47.5,
       "drinksPerGuest": 23.0,
-      "eveningFoodPerGuest": 6.5
+      "eveningFoodPerGuest": 6.5,
+      "extras": [
+        {
+          "item": "Linen & napkins",
+          "price": 182.5
+        }
+      ]
     },
     "gallery": [
       "venue-images/folly_farm_gallery/image_1.jpg",
@@ -26,7 +32,6 @@
       "venue-images/folly_farm_gallery/image_3.jpg",
       "venue-images/folly_farm_gallery/image_4.jpg",
       "venue-images/folly_farm_gallery/image_5.jpg"
-    ],
-    "accommodationAvailable": true
+    ]
   }
 ]
