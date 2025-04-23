@@ -2,10 +2,6 @@
   {
     "name": "Folly Farm Centre",
     "location": "Stowey, Pensford, Bristol",
-    "coordinates": {
-      "lat": 51.345,
-      "lng": -2.579
-    },
     "type": "Barn",
     "cateringProvided": true,
     "contact": {
@@ -25,11 +21,11 @@
       "eveningFoodPerGuest": 6.5
     },
     "gallery": [
-      "venue-images/folly_farm_gallery/image_0.jpg",
       "venue-images/folly_farm_gallery/image_1.jpg",
       "venue-images/folly_farm_gallery/image_2.jpg",
       "venue-images/folly_farm_gallery/image_3.jpg",
-      "venue-images/folly_farm_gallery/image_4.jpg"
+      "venue-images/folly_farm_gallery/image_4.jpg",
+      "venue-images/folly_farm_gallery/image_5.jpg"
     ],
     "accommodationAvailable": true
   }
