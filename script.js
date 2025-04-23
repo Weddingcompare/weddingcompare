@@ -1,4 +1,27 @@
 
+let autocomplete;
+let selectedPlaceCoords = null;
+
+function initAutocomplete() {
+  const input = document.getElementById('venueLocation');
+  autocomplete = new google.maps.places.Autocomplete(input, {
+    types: ['(cities)'],
+    componentRestrictions: { country: 'gb' }
+  });
+
+  autocomplete.addListener('place_changed', function () {
+    const place = autocomplete.getPlace();
+    if (place.geometry) {
+      selectedPlaceCoords = {
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng()
+      };
+    } else {
+      selectedPlaceCoords = null;
+    }
+  });
+}
+
 function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
   const R = 3958.8;
   const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -11,70 +34,54 @@ function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
   return R * c;
 }
 
-document.getElementById('venueSearchForm').addEventListener('submit', function(e) {
+document.getElementById('venueSearchForm').addEventListener('submit', function (e) {
   e.preventDefault();
-  const location = document.getElementById('venueLocation').value;
+
   const radius = parseFloat(document.getElementById('searchRadius').value);
   const dayGuests = parseInt(document.getElementById('venueDayGuests').value) || 0;
   const eveningGuests = parseInt(document.getElementById('venueEveningGuests').value) || 0;
 
-  console.log("Searching for location:", location);
+  if (!selectedPlaceCoords) {
+    alert("Please select a valid location from the dropdown.");
+    return;
+  }
 
-  fetch(`https://gleaming-selkie-1a0c21.netlify.app/.netlify/functions/get-coordinates?q=${encodeURIComponent(location)}`)
-    .then(response => response.json())
-    .then(searchCoords => {
-      console.log("Received coords:", searchCoords);
+  fetch('venues.json')
+    .then(res => res.json())
+    .then(venues => {
+      let results = venues.map(v => {
+        const distance = getDistanceFromLatLonInMiles(
+          selectedPlaceCoords.lat, selectedPlaceCoords.lng,
+          v.coordinates.lat, v.coordinates.lng
+        );
 
-      if (!searchCoords.lat || !searchCoords.lng) {
-        alert('Could not find location.');
-        return;
-      }
+        const estimatedCost =
+          v.pricing.venueHire +
+          dayGuests * (v.pricing.mealPerGuest + v.pricing.drinksPerGuest) +
+          eveningGuests * v.pricing.eveningFoodPerGuest +
+          v.pricing.extras.reduce((sum, item) => sum + item.price, 0);
 
-      fetch('venues.json')
-        .then(res => res.json())
-        .then(venues => {
-          console.log("Loaded venues.json:", venues);
+        return {
+          ...v,
+          distance: distance.toFixed(1),
+          estimatedCost: estimatedCost.toFixed(2)
+        };
+      });
 
-          let results = venues.map(v => {
-            const distance = getDistanceFromLatLonInMiles(
-              searchCoords.lat, searchCoords.lng,
-              v.coordinates.lat, v.coordinates.lng
-            );
+      results = results.filter(v => parseFloat(v.distance) <= radius);
+      displayVenues(results);
 
-            const estimatedCost =
-              v.pricing.venueHire +
-              dayGuests * (v.pricing.mealPerGuest + v.pricing.drinksPerGuest) +
-              eveningGuests * v.pricing.eveningFoodPerGuest +
-              v.pricing.extras.reduce((sum, item) => sum + item.price, 0);
-
-            return {
-              ...v,
-              distance: distance.toFixed(1),
-              estimatedCost: estimatedCost.toFixed(2)
-            };
-          });
-
-          results = results.filter(v => parseFloat(v.distance) <= radius);
-          console.log("Filtered venues within radius:", results);
-
-          displayVenues(results);
-
-          document.getElementById('sortFilter').addEventListener('change', function() {
-            const sortBy = this.value;
-            if (sortBy === 'price-asc') {
-              results.sort((a, b) => parseFloat(a.estimatedCost) - parseFloat(b.estimatedCost));
-            } else if (sortBy === 'price-desc') {
-              results.sort((a, b) => parseFloat(b.estimatedCost) - parseFloat(a.estimatedCost));
-            } else if (sortBy === 'distance') {
-              results.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance));
-            }
-            displayVenues(results);
-          });
-        })
-        .catch(err => console.error("Error loading venues.json:", err));
-    })
-    .catch(err => {
-      console.error("Error fetching coordinates:", err);
+      document.getElementById('sortFilter').addEventListener('change', function () {
+        const sortBy = this.value;
+        if (sortBy === 'price-asc') {
+          results.sort((a, b) => parseFloat(a.estimatedCost) - parseFloat(b.estimatedCost));
+        } else if (sortBy === 'price-desc') {
+          results.sort((a, b) => parseFloat(b.estimatedCost) - parseFloat(a.estimatedCost));
+        } else if (sortBy === 'distance') {
+          results.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance));
+        }
+        displayVenues(results);
+      });
     });
 });
 
