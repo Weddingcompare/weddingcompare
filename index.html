@@ -91,6 +91,29 @@
   </div>
 
   <script>
+    let autocomplete;
+    let selectedPlaceCoords = null;
+
+    function initAutocomplete() {
+      const input = document.getElementById('venueLocation');
+      autocomplete = new google.maps.places.Autocomplete(input, {
+        types: ['(cities)'],
+        componentRestrictions: { country: 'gb' }
+      });
+
+      autocomplete.addListener('place_changed', function () {
+        const place = autocomplete.getPlace();
+        if (place.geometry) {
+          selectedPlaceCoords = {
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng()
+          };
+        } else {
+          selectedPlaceCoords = null;
+        }
+      });
+    }
+
     function toggleAdvancedSearch() {
       const adv = document.getElementById('advancedSearch');
       adv.style.display = adv.style.display === 'none' ? 'block' : 'none';
