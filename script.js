@@ -18,9 +18,13 @@ document.getElementById('venueSearchForm').addEventListener('submit', function(e
   const dayGuests = parseInt(document.getElementById('venueDayGuests').value) || 0;
   const eveningGuests = parseInt(document.getElementById('venueEveningGuests').value) || 0;
 
+  console.log("Searching for location:", location);
+
   fetch(`https://gleaming-selkie-1a0c21.netlify.app/.netlify/functions/get-coordinates?q=${encodeURIComponent(location)}`)
     .then(response => response.json())
     .then(searchCoords => {
+      console.log("Received coords:", searchCoords);
+
       if (!searchCoords.lat || !searchCoords.lng) {
         alert('Could not find location.');
         return;
@@ -29,6 +33,8 @@ document.getElementById('venueSearchForm').addEventListener('submit', function(e
       fetch('venues.json')
         .then(res => res.json())
         .then(venues => {
+          console.log("Loaded venues.json:", venues);
+
           let results = venues.map(v => {
             const distance = getDistanceFromLatLonInMiles(
               searchCoords.lat, searchCoords.lng,
@@ -49,6 +55,8 @@ document.getElementById('venueSearchForm').addEventListener('submit', function(e
           });
 
           results = results.filter(v => parseFloat(v.distance) <= radius);
+          console.log("Filtered venues within radius:", results);
+
           displayVenues(results);
 
           document.getElementById('sortFilter').addEventListener('change', function() {
@@ -62,13 +70,22 @@ document.getElementById('venueSearchForm').addEventListener('submit', function(e
             }
             displayVenues(results);
           });
-        });
+        })
+        .catch(err => console.error("Error loading venues.json:", err));
+    })
+    .catch(err => {
+      console.error("Error fetching coordinates:", err);
     });
 });
 
 function displayVenues(venues) {
   const container = document.getElementById('venueResults');
   container.innerHTML = '';
+  if (venues.length === 0) {
+    container.innerHTML = '<p>No venues found within the selected distance.</p>';
+    return;
+  }
+
   venues.forEach(v => {
     const div = document.createElement('div');
     div.className = 'venue-card';
