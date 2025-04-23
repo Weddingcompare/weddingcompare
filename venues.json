@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "name": "Sample Manor",
+    "location": "Oxford",
+    "coordinates": {
+      "lat": 51.752,
+      "lng": -1.257
+    },
+    "type": "Manor",
+    "guests": {
+      "minDay": 50,
+      "maxDay": 120,
+      "maxEvening": 200
+    },
+    "pricing": {
+      "venueHire": 5000,
+      "mealPerGuest": 60,
+      "drinksPerGuest": 25,
+      "eveningFoodPerGuest": 20,
+      "extras": [
+        {
+          "item": "Cutlery",
+          "price": 5
+        }
+      ],
+      "inclusions": "2 canap\u00e9s, 1/2 bottle wine, welcome drinks"
+    },
+    "contact": {
+      "website": "https://samplemanorweddings.com"
+    }
+  }
+]

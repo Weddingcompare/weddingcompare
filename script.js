@@ -18,14 +18,13 @@ document.getElementById('venueSearchForm').addEventListener('submit', function(e
   const dayGuests = parseInt(document.getElementById('venueDayGuests').value) || 0;
   const eveningGuests = parseInt(document.getElementById('venueEveningGuests').value) || 0;
 
-  fetch(`https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(location)}&key=267388b88dfa43eba539412fef6151a9`)
+  fetch(`https://gleaming-selkie-1a0c21.netlify.app/.netlify/functions/get-coordinates?q=${encodeURIComponent(location)}`)
     .then(response => response.json())
-    .then(data => {
-      if (!data.results.length) {
-        alert('Location not found.');
+    .then(searchCoords => {
+      if (!searchCoords.lat || !searchCoords.lng) {
+        alert('Could not find location.');
         return;
       }
-      const searchCoords = data.results[0].geometry;
 
       fetch('venues.json')
         .then(res => res.json())
