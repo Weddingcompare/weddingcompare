@@ -1,0 +1,49 @@
+{
+  "name": "Euridge Manor",
+  "location": "Cotswolds, near Bath",
+  "type": "Georgian-style country estate",
+  "coordinates": {
+    "lat": 51.385,
+    "lng": -2.365
+  },
+  "guests": {
+    "minDay": null,
+    "maxDay": 120,
+    "maxEvening": 150
+  },
+  "pricing": {
+    "venueHire": 8000,
+    "mealPerGuest": 65.0,
+    "drinksPerGuest": 30.0,
+    "eveningFoodPerGuest": 35.0,
+    "extras": [
+      {
+        "item": "Accommodation",
+        "price": 150.0
+      },
+      {
+        "item": "Corkage Fee",
+        "price": 10.0
+      },
+      {
+        "item": "Additional Decor",
+        "price": 500.0
+      }
+    ]
+  },
+  "exclusions": [
+    "Entertainment",
+    "Photography",
+    "Floristry"
+  ],
+  "gallery": [
+    "images/euridge1.jpg",
+    "images/euridge2.jpg",
+    "images/euridge3.jpg"
+  ],
+  "contact": {
+    "website": "https://euridgehouse.co.uk",
+    "email": "info@euridgehouse.co.uk",
+    "phone": "+44 1234 567890"
+  }
+}

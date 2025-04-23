@@ -1,0 +1,45 @@
+{
+  "name": "Tunnels Beaches",
+  "location": "Ilfracombe, North Devon",
+  "type": "Seaside Cliff Venue",
+  "coordinates": {
+    "lat": 51.203,
+    "lng": -4.122
+  },
+  "guests": {
+    "minDay": 40,
+    "maxDay": 120,
+    "maxEvening": 160
+  },
+  "pricing": {
+    "venueHire": 9500,
+    "mealPerGuest": 60.0,
+    "drinksPerGuest": 25.0,
+    "eveningFoodPerGuest": 15.0,
+    "extras": [
+      {
+        "item": "Sea View Accommodation",
+        "price": 500.0
+      },
+      {
+        "item": "Pool Heating",
+        "price": 150.0
+      }
+    ]
+  },
+  "exclusions": [
+    "Cake",
+    "Flowers",
+    "Music/Entertainment"
+  ],
+  "gallery": [
+    "images/tunnels1.jpg",
+    "images/tunnels2.jpg",
+    "images/tunnels3.jpg"
+  ],
+  "contact": {
+    "website": "https://www.tunnelsbeaches.co.uk",
+    "email": "info@tunnelsbeaches.co.uk",
+    "phone": "+44 1271 879882"
+  }
+}

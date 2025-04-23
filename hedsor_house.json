@@ -1,0 +1,45 @@
+{
+  "name": "Hedsor House",
+  "location": "Taplow, Buckinghamshire",
+  "type": "Stately Home",
+  "coordinates": {
+    "lat": 51.547,
+    "lng": -0.681
+  },
+  "guests": {
+    "minDay": 60,
+    "maxDay": 150,
+    "maxEvening": 200
+  },
+  "pricing": {
+    "venueHire": 12000,
+    "mealPerGuest": 80.0,
+    "drinksPerGuest": 30.0,
+    "eveningFoodPerGuest": 25.0,
+    "extras": [
+      {
+        "item": "Security",
+        "price": 300.0
+      },
+      {
+        "item": "Cleaning Fee",
+        "price": 250.0
+      }
+    ]
+  },
+  "exclusions": [
+    "Entertainment",
+    "Hair & Makeup",
+    "Cake"
+  ],
+  "gallery": [
+    "images/hedsor1.jpg",
+    "images/hedsor2.jpg",
+    "images/hedsor3.jpg"
+  ],
+  "contact": {
+    "website": "https://www.hedsor.com",
+    "email": "enquiries@hedsor.com",
+    "phone": "+44 1628 819050"
+  }
+}

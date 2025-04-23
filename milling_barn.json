@@ -1,0 +1,45 @@
+{
+  "name": "Milling Barn",
+  "location": "Throcking, Hertfordshire",
+  "type": "Rustic Barn",
+  "coordinates": {
+    "lat": 51.93,
+    "lng": -0.069
+  },
+  "guests": {
+    "minDay": 50,
+    "maxDay": 144,
+    "maxEvening": 250
+  },
+  "pricing": {
+    "venueHire": 6000,
+    "mealPerGuest": 50.0,
+    "drinksPerGuest": 20.0,
+    "eveningFoodPerGuest": 10.0,
+    "extras": [
+      {
+        "item": "Confetti Cleaning",
+        "price": 75.0
+      },
+      {
+        "item": "Midnight Extension",
+        "price": 400.0
+      }
+    ]
+  },
+  "exclusions": [
+    "Cake",
+    "Entertainment",
+    "Florist"
+  ],
+  "gallery": [
+    "images/millingbarn1.jpg",
+    "images/millingbarn2.jpg",
+    "images/millingbarn3.jpg"
+  ],
+  "contact": {
+    "website": "https://www.millingbarn.co.uk",
+    "email": "info@millingbarn.co.uk",
+    "phone": "+44 1438 986077"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Doxford Barns",
+  "location": "Chathill, Northumberland",
+  "type": "Countryside Barn",
+  "coordinates": {
+    "lat": 55.528,
+    "lng": -1.676
+  },
+  "guests": {
+    "minDay": 60,
+    "maxDay": 180,
+    "maxEvening": 200
+  },
+  "pricing": {
+    "venueHire": 8750,
+    "mealPerGuest": 65.0,
+    "drinksPerGuest": 24.0,
+    "eveningFoodPerGuest": 13.5,
+    "extras": [
+      {
+        "item": "Weekend Exclusive Hire",
+        "price": 2000.0
+      },
+      {
+        "item": "On-Site Accommodation",
+        "price": 850.0
+      }
+    ]
+  },
+  "exclusions": [
+    "DJ/Band",
+    "Florals",
+    "Cake"
+  ],
+  "gallery": [
+    "images/doxford1.jpg",
+    "images/doxford2.jpg",
+    "images/doxford3.jpg"
+  ],
+  "contact": {
+    "website": "https://www.doxfordbarns.com",
+    "email": "hello@doxfordbarns.com",
+    "phone": "+44 1665 579173"
+  }
+}

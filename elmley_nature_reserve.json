@@ -1,0 +1,45 @@
+{
+  "name": "Elmley Nature Reserve",
+  "location": "Isle of Sheppey, Kent",
+  "type": "Nature Reserve / Barn Venue",
+  "coordinates": {
+    "lat": 51.387,
+    "lng": 0.787
+  },
+  "guests": {
+    "minDay": 50,
+    "maxDay": 120,
+    "maxEvening": 200
+  },
+  "pricing": {
+    "venueHire": 8500,
+    "mealPerGuest": 55.0,
+    "drinksPerGuest": 22.0,
+    "eveningFoodPerGuest": 12.0,
+    "extras": [
+      {
+        "item": "Fire Pits",
+        "price": 100.0
+      },
+      {
+        "item": "Luxury Toilets",
+        "price": 250.0
+      }
+    ]
+  },
+  "exclusions": [
+    "Flowers",
+    "Music/Entertainment",
+    "Celebrant"
+  ],
+  "gallery": [
+    "images/elmley1.jpg",
+    "images/elmley2.jpg",
+    "images/elmley3.jpg"
+  ],
+  "contact": {
+    "website": "https://www.elmleynaturereserve.co.uk",
+    "email": "weddings@elmleynaturereserve.co.uk",
+    "phone": "+44 1795 664896"
+  }
+}
