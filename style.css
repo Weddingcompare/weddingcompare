@@ -1,61 +1,47 @@
 body {
   font-family: 'Georgia', serif;
-  background: #f9f8f6;
+  background-color: #f9f5f0;
   color: #333;
+  text-align: center;
   margin: 0;
   padding: 0;
 }
-
-header {
-  text-align: center;
-  padding: 2em 1em;
-  background: #fff;
-  border-bottom: 2px solid #e6e6e6;
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
 }
-
-header h1 {
+h1 {
   font-size: 2.5em;
-  margin: 0;
-  font-family: 'Georgia', serif;
+  margin-bottom: 0;
 }
-
 .tagline {
   font-size: 1.2em;
   color: #777;
+  margin-top: 0;
 }
-
 form {
-  text-align: center;
-  margin: 2em 1em;
+  margin: 20px 0;
 }
-
-.search-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-  justify-content: center;
-  align-items: center;
-}
-
-.search-bar input, .search-bar select, .search-bar button {
+input, select, button {
+  padding: 10px;
+  margin: 5px;
   font-size: 1em;
-  padding: 0.5em;
 }
-
-#advancedFields {
-  margin-top: 1em;
+button {
+  background-color: #d4af37;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
-
 .venue {
   background: white;
-  margin: 1em auto;
-  padding: 1em;
-  max-width: 800px;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin: 15px 0;
+  padding: 15px;
+  text-align: left;
 }
-
-#pagination {
-  text-align: center;
-  margin: 1em;
+#pagination button {
+  margin: 5px;
 }
