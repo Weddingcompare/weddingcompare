@@ -1,1 +1,43 @@
-[]
+
+[
+  {
+    "name": "Hedsor House",
+    "location": "Taplow, Buckinghamshire",
+    "latitude": 51.5564,
+    "longitude": -0.6814,
+    "type": "Stately Home",
+    "min_day_guests": 60,
+    "max_day_guests": 150,
+    "max_evening_guests": 200,
+    "price_per_day_guest": 150,
+    "day_guest_includes": "Canapés, ½ bottle wine, 1 welcome drink",
+    "price_per_evening_guest": 40,
+    "evening_guest_includes": "Evening food and drinks",
+    "extras": "Cutlery hire £3 pp, PA system £100",
+    "exclusions": "No cake included, no table linen",
+    "venue_hire": 5000,
+    "estimate": 15000,
+    "contact": "info@hedsor.com",
+    "website": "https://www.hedsor.com"
+  },
+  {
+    "name": "The Barn at Botley Hill",
+    "location": "Surrey Hills",
+    "latitude": 51.2888,
+    "longitude": -0.0052,
+    "type": "Barn",
+    "min_day_guests": 50,
+    "max_day_guests": 128,
+    "max_evening_guests": 180,
+    "price_per_day_guest": 135,
+    "day_guest_includes": "Canapés, 1 drink on arrival, half bottle wine, 3-course meal",
+    "price_per_evening_guest": 35,
+    "evening_guest_includes": "Evening buffet and soft drinks",
+    "extras": "Linen hire £2.50 pp, fairy lights £150",
+    "exclusions": "No photographer or cake",
+    "venue_hire": 4000,
+    "estimate": 13500,
+    "contact": "events@botleyhillbarn.co.uk",
+    "website": "https://botleyhillbarn.co.uk"
+  }
+]
