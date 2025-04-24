@@ -1,1 +1,1 @@
-// script.js content
+// script.js placeholder – working script inserted in real deployment
