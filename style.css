@@ -1,46 +1,76 @@
-
 body {
   font-family: 'Georgia', serif;
-  background-color: #f9f6f1;
+  background-color: #f9f9f9;
   color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
   text-align: center;
+  padding: 2em 1em;
+  background-color: #fff0f5;
+  border-bottom: 2px solid #e3d4e1;
+}
+
+h1 {
+  font-family: 'Cursive', serif;
+  font-size: 2.5em;
+  color: #c71585;
   margin: 0;
 }
-.container {
-  padding: 2em;
-}
-.title {
-  font-size: 2.5em;
-  margin-bottom: 0.2em;
-}
-.subtitle {
+
+p {
   font-size: 1.2em;
-  color: #777;
-  margin-bottom: 1.5em;
+  color: #555;
 }
+
 form {
-  margin-bottom: 2em;
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 1em;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-input, select, button {
-  padding: 0.5em;
-  margin: 0.2em;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+
+form > * {
+  display: block;
+  margin: 0.5em 0;
+  width: 100%;
 }
+
 button {
-  background-color: #dfb3b3;
-  border: none;
+  background-color: #c71585;
   color: white;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
 }
+
 button:hover {
-  background-color: #c99e9e;
+  background-color: #a71370;
 }
+
+#venueResults {
+  max-width: 800px;
+  margin: 2em auto;
+}
+
 .venue {
-  background: white;
-  border-radius: 10px;
+  background: #fff;
+  border: 1px solid #e3d4e1;
   padding: 1em;
-  margin: 1em auto;
-  max-width: 600px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-bottom: 1em;
+  border-radius: 6px;
+}
+
+#pagination {
+  text-align: center;
+  margin: 2em 0;
+}
+
+#pagination button {
+  margin: 0 0.25em;
 }

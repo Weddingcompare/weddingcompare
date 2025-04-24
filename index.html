@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wedding Compare</title>
   <link rel="stylesheet" href="style.css" />
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE&libraries=places&callback=initAutocomplete"
-    async
-    defer
-  ></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE&libraries=places"></script>
 </head>
 <body>
   <header>
@@ -18,31 +14,39 @@
   </header>
   <main>
     <form id="venueSearchForm">
-      <input type="text" id="locationInput" placeholder="Enter location" required />
+      <div id="autocomplete-container">
+        <gmpx-api-loader key="AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE" solution-channel="GMP_QB_autocomplete_v1"></gmpx-api-loader>
+        <gmpx-place-autocomplete id="autocomplete" placeholder="Enter a location"></gmpx-place-autocomplete>
+      </div>
+      <label for="searchRadius">Within:</label>
       <select id="searchRadius">
-        <option value="1">Within 1 mile</option>
-        <option value="3">Within 3 miles</option>
-        <option value="5" selected>Within 5 miles</option>
-        <option value="10">Within 10 miles</option>
-        <option value="20">Within 20 miles</option>
-        <option value="50">Within 50 miles</option>
+        <option value="1">1 mile</option>
+        <option value="3">3 miles</option>
+        <option value="5">5 miles</option>
+        <option value="10" selected>10 miles</option>
+        <option value="20">20 miles</option>
+        <option value="50">50 miles</option>
       </select>
       <button type="submit">Search</button>
-      <button type="button" id="advancedSearchToggle">Advanced Search</button>
-      <div id="advancedSearchFields" style="display:none;">
-        <input type="number" id="venueDayGuests" placeholder="Number of day guests" />
-        <input type="number" id="venueEveningGuests" placeholder="Number of evening guests" />
+      <button type="button" id="toggleAdvancedSearch">Advanced Search</button>
+      <div id="advancedSearch" style="display: none;">
+        <label for="venueDayGuests">Number of day guests:</label>
+        <input type="number" id="venueDayGuests" min="0" />
+        <label for="venueEveningGuests">Number of evening guests:</label>
+        <input type="number" id="venueEveningGuests" min="0" />
       </div>
+      <label for="sortFilter">Sort by:</label>
+      <select id="sortFilter">
+        <option value="">--Select--</option>
+        <option value="price-asc">Price (Low to High)</option>
+        <option value="price-desc">Price (High to Low)</option>
+        <option value="distance">Distance</option>
+      </select>
     </form>
-    <select id="sortFilter">
-      <option value="">Sort by</option>
-      <option value="price-asc">Price: Low to High</option>
-      <option value="price-desc">Price: High to Low</option>
-      <option value="distance">Distance</option>
-    </select>
     <div id="venueResults"></div>
-    <div id="paginationControls"></div>
+    <div id="pagination"></div>
   </main>
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
+  <script type="module" src="https://unpkg.com/@googlemaps/extended-component-library/place_autocomplete_element.js"></script>
 </body>
 </html>
