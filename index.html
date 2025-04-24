@@ -34,6 +34,12 @@
       margin: 0.5rem;
       font-size: 1rem;
     }
+    place-autocomplete {
+      max-width: 600px;
+      width: 100%;
+      display: block;
+      margin: 0 auto 1rem auto;
+    }
     .advanced-toggle {
       cursor: pointer;
       color: #337ab7;
@@ -55,9 +61,6 @@
       margin-top: 1rem;
       text-align: left;
     }
-    #locationContainer {
-      margin-bottom: 1rem;
-    }
   </style>
   <script type="module" src="https://www.gstatic.com/maps-platform/v1/place_autocomplete.js"></script>
 </head>
@@ -67,9 +70,7 @@
     <p class="tagline">Find your perfect wedding venue</p>
 
     <form id="venueSearchForm">
-      <div id="locationContainer">
-        <place-autocomplete id="autocomplete" input-placeholder="Search your location"></place-autocomplete>
-      </div>
+      <place-autocomplete id="autocomplete" input-placeholder="Search your location"></place-autocomplete>
 
       <select id="searchRadius">
         <option value="1">Within 1 mile</option>
@@ -111,13 +112,13 @@
 
     let selectedPlaceCoords = null;
     window.addEventListener("DOMContentLoaded", () => {
-      const autocompleteElement = document.querySelector("place-autocomplete");
-      autocompleteElement.addEventListener("gmp-placechange", (event) => {
+      const autocomplete = document.querySelector("place-autocomplete");
+      autocomplete.addEventListener("gmp-placechange", (event) => {
         const place = event.detail;
         if (place && place.geometry && place.geometry.location) {
           selectedPlaceCoords = {
             lat: place.geometry.location.lat,
-            lng: place.geometry.location.lng,
+            lng: place.geometry.location.lng
           };
           console.log("Selected coordinates:", selectedPlaceCoords);
         }
