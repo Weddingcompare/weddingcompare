@@ -1,19 +1,19 @@
 
-let selectedPlaceCoords;
+let selectedPlaceCoords = null;
 
 function initAutocomplete() {
   const input = document.getElementById("searchLocation");
   const autocomplete = new google.maps.places.Autocomplete(input);
-  autocomplete.addListener("place_changed", function () {
+  autocomplete.addListener("place_changed", () => {
     const place = autocomplete.getPlace();
-    if (place.geometry) {
-      selectedPlaceCoords = {
-        lat: place.geometry.location.lat(),
-        lng: place.geometry.location.lng()
-      };
-    }
+    if (!place.geometry) return;
+    selectedPlaceCoords = {
+      lat: place.geometry.location.lat(),
+      lng: place.geometry.location.lng()
+    };
   });
 }
+window.initAutocomplete = initAutocomplete;
 
 document.getElementById("toggleAdvanced").addEventListener("click", () => {
   const adv = document.getElementById("advancedSearch");
@@ -29,8 +29,9 @@ document.getElementById("venueSearchForm").addEventListener("submit", async func
   }
 
   const radiusMiles = parseFloat(document.getElementById("searchRadius").value);
-  const dayGuests = parseInt(document.getElementById("venueDayGuests").value) || 0;
-  const eveningGuests = parseInt(document.getElementById("venueEveningGuests").value) || 0;
+  const dayGuests = parseInt(document.getElementById("venueDayGuests").value);
+  const eveningGuests = parseInt(document.getElementById("venueEveningGuests").value);
+  const advancedUsed = !isNaN(dayGuests) || !isNaN(eveningGuests);
 
   const venues = await fetch("venues.json").then(res => res.json());
   const resultsContainer = document.getElementById("venueResults");
@@ -44,23 +45,41 @@ document.getElementById("venueSearchForm").addEventListener("submit", async func
       venue.longitude
     );
     return { ...venue, distance };
-  }).filter(venue => venue.distance <= radiusMiles);
-
-  filtered.sort((a, b) => {
-    const sort = document.getElementById("sortFilter").value;
-    if (sort === "price-asc") return a.estimated_cost - b.estimated_cost;
-    if (sort === "price-desc") return b.estimated_cost - a.estimated_cost;
-    if (sort === "distance") return a.distance - b.distance;
-    return 0;
+  }).filter(venue => {
+    if (venue.distance > radiusMiles) return false;
+    if (advancedUsed) {
+      if (!isNaN(dayGuests)) {
+        if (dayGuests < venue.min_day_guests || dayGuests > venue.max_day_guests) return false;
+      }
+      if (!isNaN(eveningGuests)) {
+        if (eveningGuests > venue.max_evening_guests) return false;
+      }
+    }
+    return true;
   });
 
+  const sort = document.getElementById("sortFilter").value;
+  if (sort === "price-asc") filtered.sort((a, b) => (a.estimated_cost || a.average_cost) - (b.estimated_cost || b.average_cost));
+  if (sort === "price-desc") filtered.sort((a, b) => (b.estimated_cost || b.average_cost) - (a.estimated_cost || a.average_cost));
+  if (sort === "distance") filtered.sort((a, b) => a.distance - b.distance);
+
   if (filtered.length === 0) {
-    resultsContainer.innerHTML = "<p>No venues found within the selected radius.</p>";
+    resultsContainer.innerHTML = "<p>No venues found within the selected criteria.</p>";
     return;
   }
 
   filtered.forEach(venue => {
-    const totalCost = (venue.price_per_day_guest * dayGuests) + (venue.price_per_evening_guest * eveningGuests);
+    let costInfo = "";
+    if (!isNaN(dayGuests) || !isNaN(eveningGuests)) {
+      const totalCost = 
+        (venue.price_per_day_guest * (dayGuests || 0)) +
+        (venue.price_per_evening_guest * (eveningGuests || 0)) +
+        (parseFloat(venue.venue_hire) || 0);
+      costInfo = `<p><strong>Estimated Total:</strong> £${totalCost.toFixed(2)}</p>`;
+    } else {
+      costInfo = `<p><strong>Average Cost:</strong> £${venue.average_cost}</p>`;
+    }
+
     const div = document.createElement("div");
     div.className = "venue";
     div.innerHTML = `
@@ -72,7 +91,7 @@ document.getElementById("venueSearchForm").addEventListener("submit", async func
       <p><strong>Price per evening guest:</strong> £${venue.price_per_evening_guest} (${venue.evening_guest_includes})</p>
       <p><strong>Extras:</strong> ${venue.extra_costs}</p>
       <p><strong>Exclusions:</strong> ${venue.exclusions}</p>
-      <p><strong>Estimated Total:</strong> £${totalCost.toFixed(2)}</p>
+      ${costInfo}
       <p><strong>Contact:</strong> ${venue.contact}</p>
       <p><a href="${venue.website}" target="_blank">Visit Venue Website</a></p>
     `;
@@ -84,10 +103,9 @@ function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
   const R = 3958.8;
   const dLat = deg2rad(lat2 - lat1);
   const dLon = deg2rad(lon2 - lon1);
-  const a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   return R * c;
 }
@@ -95,9 +113,3 @@ function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
 function deg2rad(deg) {
   return deg * (Math.PI / 180);
 }
-
-document.getElementById("sortFilter").addEventListener("change", () => {
-  document.getElementById("venueSearchForm").dispatchEvent(new Event("submit"));
-});
-
-window.initAutocomplete = initAutocomplete;
