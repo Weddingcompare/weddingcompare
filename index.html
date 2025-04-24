@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wedding Compare</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE&libraries=places&callback=initAutocomplete">
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Wedding Compare</h1>
+      <p class="tagline">Find your perfect wedding venue</p>
+    </header>
+
+    <form id="venueSearchForm">
+      <label for="searchLocation">Location:</label>
+      <input id="searchLocation" name="location" type="text" placeholder="Enter a location" required />
+
+      <label for="searchRadius">Within:</label>
+      <select id="searchRadius">
+        <option value="1">1 mile</option>
+        <option value="3">3 miles</option>
+        <option value="5">5 miles</option>
+        <option value="10">10 miles</option>
+        <option value="25">25 miles</option>
+        <option value="50">50 miles</option>
+        <option value="100">100 miles</option>
+        <option value="500">500 miles</option>
+      </select>
+
+      <button type="button" id="toggleAdvanced">Advanced Search</button>
+      <div id="advancedSearch" style="display: none">
+        <label for="venueDayGuests">Number of Day Guests:</label>
+        <input type="number" id="venueDayGuests" name="dayGuests" min="0" />
+
+        <label for="venueEveningGuests">Number of Evening Guests:</label>
+        <input type="number" id="venueEveningGuests" name="eveningGuests" min="0" />
+      </div>
+
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="sortContainer">
+      <label for="sortFilter">Sort by:</label>
+      <select id="sortFilter">
+        <option value="">Select</option>
+        <option value="price-asc">Price (low to high)</option>
+        <option value="price-desc">Price (high to low)</option>
+        <option value="distance">Distance</option>
+      </select>
+    </div>
+
+    <div id="venueResults"></div>
+  </div>
+</body>
+</html>

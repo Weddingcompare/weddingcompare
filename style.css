@@ -1,93 +1,30 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Libre+Baskerville&display=swap');
-
 body {
-  background-color: #fefdfb;
-  font-family: 'Libre Baskerville', serif;
-  color: #3a3a3a;
+  font-family: 'Georgia', serif;
+  background-color: #fdfdfb;
   margin: 0;
   padding: 0;
-  background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
 }
-
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
 header {
-  background-color: #fff;
   text-align: center;
-  padding: 2rem 1rem;
-  border-bottom: 1px solid #e8e4dc;
+  margin-bottom: 20px;
 }
-
-h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.2rem;
-  color: #5c4a3b;
-  margin: 0;
-}
-
-header p {
+.tagline {
   font-style: italic;
-  font-size: 1.25rem;
-  color: #8c7b71;
-  margin-top: 0.5rem;
+  color: #666;
 }
-
-main {
-  max-width: 960px;
-  margin: 2rem auto;
-  padding: 1rem 2rem;
-  background-color: #ffffffdd;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.06);
+form, #sortContainer {
+  margin-bottom: 20px;
 }
-
-form {
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background: #fff;
-  border: 1px solid #e3ded9;
-  border-radius: 8px;
-}
-
-input[type="text"], select, button {
-  padding: 0.8rem;
-  margin: 0.75rem 0;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-family: 'Libre Baskerville', serif;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-button {
-  background-color: #b89c88;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button:hover {
-  background-color: #a88a76;
-}
-
 .venue {
-  border-left: 4px solid #d1b9a3;
-  padding: 1.2rem;
-  background: #fff;
-  margin-bottom: 1.5rem;
+  border: 1px solid #ccc;
+  padding: 15px;
+  margin-bottom: 10px;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.venue h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem;
-  margin: 0 0 0.5rem 0;
-  color: #4a3a2f;
-}
-
-.venue p {
-  margin: 0.4rem 0;
-  line-height: 1.6;
+  background: white;
 }
