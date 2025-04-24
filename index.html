@@ -52,23 +52,7 @@
     <section id="venueResults"></section>
   </main>
 
-  <script>
-    let selectedPlaceCoords = null;
 
-    function initAutocomplete() {
-      const input = document.getElementById("venueLocation");
-      const autocomplete = new google.maps.places.Autocomplete(input);
-      autocomplete.addListener("place_changed", function () {
-        const place = autocomplete.getPlace();
-        if (place.geometry) {
-          selectedPlaceCoords = {
-            lat: place.geometry.location.lat(),
-            lng: place.geometry.location.lng()
-          };
-        }
-      });
-    }
-  </script>
   <script src="script.js"></script>
 </body>
 </html>
