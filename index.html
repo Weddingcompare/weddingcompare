@@ -1,62 +1,47 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wedding Compare</title>
   <link rel="stylesheet" href="style.css">
-  <script>
-    let selectedPlaceCoords;
-    function initAutocomplete() {
-      const input = document.getElementById("venueLocation");
-      const autocomplete = new google.maps.places.Autocomplete(input);
-      autocomplete.addListener("place_changed", () => {
-        const place = autocomplete.getPlace();
-        if (place.geometry && place.geometry.location) {
-          selectedPlaceCoords = {
-            lat: place.geometry.location.lat(),
-            lng: place.geometry.location.lng(),
-          };
-        }
-      });
-    }
-  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE&libraries=places&callback=initAutocomplete" async defer></script>
 </head>
 <body>
-  <header>
-    <h1>Wedding Compare</h1>
-    <p>Find your perfect venue</p>
-  </header>
-  <main>
+  <div class="container">
+    <h1 class="title">Wedding Compare</h1>
+    <p class="subtitle">Find your perfect venue</p>
+
     <form id="venueSearchForm">
-      <input type="text" id="venueLocation" placeholder="Enter a location" required />
+      <input id="locationInput" type="text" placeholder="Enter location" required>
       <select id="searchRadius">
-        <option value="1">Within 1 mile</option>
-        <option value="3">Within 3 miles</option>
-        <option value="5">Within 5 miles</option>
-        <option value="10" selected>Within 10 miles</option>
-        <option value="25">Within 25 miles</option>
-        <option value="50">Within 50 miles</option>
-        <option value="100">Within 100 miles</option>
-        <option value="500">Within 500 miles</option>
+        <option value="1">1 mile</option>
+        <option value="3">3 miles</option>
+        <option value="5">5 miles</option>
+        <option value="10">10 miles</option>
+        <option value="25">25 miles</option>
+        <option value="50">50 miles</option>
+        <option value="100">100 miles</option>
+        <option value="500">500 miles</option>
       </select>
       <button type="submit">Search</button>
-      <button type="button" id="advancedSearchToggle">Advanced Search</button>
-      <div id="advancedSearch" style="display: none;">
+      <button id="toggleAdvanced">Advanced Search</button>
+      <div id="advancedSearch" style="display:none;">
         <input type="number" id="venueDayGuests" placeholder="Number of day guests">
         <input type="number" id="venueEveningGuests" placeholder="Number of evening guests">
       </div>
       <select id="sortFilter">
-        <option value="none">Sort by</option>
-        <option value="price-asc">Price (Low to High)</option>
-        <option value="price-desc">Price (High to Low)</option>
+        <option value="">Sort by</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
         <option value="distance">Distance</option>
       </select>
     </form>
+
     <div id="venueResults"></div>
-  </main>
+    <div id="pagination"></div>
+  </div>
   <script src="script.js"></script>
-  <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE&libraries=places&callback=initAutocomplete">
-  </script>
 </body>
 </html>

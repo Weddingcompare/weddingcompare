@@ -1,1 +1,46 @@
-body { font-family: 'Georgia', serif; background: #fffaf8; }
+
+body {
+  font-family: 'Georgia', serif;
+  background-color: #f9f6f1;
+  color: #333;
+  text-align: center;
+  margin: 0;
+}
+.container {
+  padding: 2em;
+}
+.title {
+  font-size: 2.5em;
+  margin-bottom: 0.2em;
+}
+.subtitle {
+  font-size: 1.2em;
+  color: #777;
+  margin-bottom: 1.5em;
+}
+form {
+  margin-bottom: 2em;
+}
+input, select, button {
+  padding: 0.5em;
+  margin: 0.2em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+button {
+  background-color: #dfb3b3;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #c99e9e;
+}
+.venue {
+  background: white;
+  border-radius: 10px;
+  padding: 1em;
+  margin: 1em auto;
+  max-width: 600px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
