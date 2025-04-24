@@ -58,7 +58,10 @@ document.getElementById("venueSearchForm").addEventListener("submit", async func
     return true;
   });
 
-  const sort = document.getElementById("sortFilter").value;
+  
+    const sortSelect = document.getElementById("sortFilter");
+    const sort = sortSelect ? sortSelect.value : "";
+    
   if (sort === "price-asc") filtered.sort((a, b) => (a.estimated_cost || a.average_cost) - (b.estimated_cost || b.average_cost));
   if (sort === "price-desc") filtered.sort((a, b) => (b.estimated_cost || b.average_cost) - (a.estimated_cost || a.average_cost));
   if (sort === "distance") filtered.sort((a, b) => a.distance - b.distance);
