@@ -74,3 +74,8 @@ function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
 function deg2rad(deg) {
   return deg * (Math.PI / 180);
 }
+
+
+document.getElementById("sortFilter").addEventListener("change", () => {
+  document.getElementById("venueSearchForm").dispatchEvent(new Event("submit"));
+});
