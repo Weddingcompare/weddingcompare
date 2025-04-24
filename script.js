@@ -1,6 +1,4 @@
 
-let selectedPlaceCoords = null;
-
 document.getElementById("venueSearchForm").addEventListener("submit", async function (e) {
   e.preventDefault();
 
@@ -62,7 +60,7 @@ document.getElementById("venueSearchForm").addEventListener("submit", async func
 });
 
 function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
-  const R = 3958.8; // Radius of Earth in miles
+  const R = 3958.8;
   const dLat = deg2rad(lat2 - lat1);
   const dLon = deg2rad(lon2 - lon1);
   const a =
