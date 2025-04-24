@@ -1,43 +1,31 @@
-
 let selectedPlaceCoords = null;
+let currentPage = 1;
+const venuesPerPage = 10;
+let currentVenues = [];
 
 function initAutocomplete() {
-  const input = document.getElementById("searchLocation");
-  const autocomplete = new google.maps.places.Autocomplete(input);
-  autocomplete.addListener("place_changed", () => {
+  const autocompleteInput = document.getElementById("autocomplete");
+  const autocomplete = new google.maps.places.Autocomplete(autocompleteInput);
+  autocomplete.addListener("place_changed", function () {
     const place = autocomplete.getPlace();
     if (!place.geometry) return;
     selectedPlaceCoords = {
       lat: place.geometry.location.lat(),
-      lng: place.geometry.location.lng()
+      lng: place.geometry.location.lng(),
     };
   });
 }
-window.initAutocomplete = initAutocomplete;
-
-document.getElementById("toggleAdvanced").addEventListener("click", () => {
-  const adv = document.getElementById("advancedSearch");
-  adv.style.display = adv.style.display === "none" ? "block" : "none";
-});
 
 document.getElementById("venueSearchForm").addEventListener("submit", async function (e) {
   e.preventDefault();
-
   if (!selectedPlaceCoords) {
     alert("Please select a valid location.");
     return;
   }
 
   const radiusMiles = parseFloat(document.getElementById("searchRadius").value);
-  const dayGuests = parseInt(document.getElementById("venueDayGuests").value);
-  const eveningGuests = parseInt(document.getElementById("venueEveningGuests").value);
-  const advancedUsed = !isNaN(dayGuests) || !isNaN(eveningGuests);
-
   const venues = await fetch("venues.json").then(res => res.json());
-  const resultsContainer = document.getElementById("venueResults");
-  resultsContainer.innerHTML = "";
-
-  const filtered = venues.map(venue => {
+  const resultsWithDistance = venues.map(venue => {
     const distance = getDistanceFromLatLonInMiles(
       selectedPlaceCoords.lat,
       selectedPlaceCoords.lng,
@@ -45,44 +33,33 @@ document.getElementById("venueSearchForm").addEventListener("submit", async func
       venue.longitude
     );
     return { ...venue, distance };
-  }).filter(venue => {
-    if (venue.distance > radiusMiles) return false;
-    if (advancedUsed) {
-      if (!isNaN(dayGuests)) {
-        if (dayGuests < venue.min_day_guests || dayGuests > venue.max_day_guests) return false;
-      }
-      if (!isNaN(eveningGuests)) {
-        if (eveningGuests > venue.max_evening_guests) return false;
-      }
-    }
-    return true;
-  });
+  }).filter(venue => venue.distance <= radiusMiles);
 
-  
-    const sortSelect = document.getElementById("sortFilter");
-    const sort = sortSelect ? sortSelect.value : "";
-    
-  if (sort === "price-asc") filtered.sort((a, b) => (a.estimated_cost || a.average_cost) - (b.estimated_cost || b.average_cost));
-  if (sort === "price-desc") filtered.sort((a, b) => (b.estimated_cost || b.average_cost) - (a.estimated_cost || a.average_cost));
-  if (sort === "distance") filtered.sort((a, b) => a.distance - b.distance);
+  renderVenuesWithPagination(resultsWithDistance);
+});
 
-  if (filtered.length === 0) {
-    resultsContainer.innerHTML = "<p>No venues found within the selected criteria.</p>";
+function renderVenuesWithPagination(venues) {
+  currentVenues = venues;
+  currentPage = 1;
+  displayCurrentPage();
+  setupPaginationControls();
+}
+
+function displayCurrentPage() {
+  const start = (currentPage - 1) * venuesPerPage;
+  const end = start + venuesPerPage;
+  const paginatedVenues = currentVenues.slice(start, end);
+
+  const resultsContainer = document.getElementById("venueResults");
+  resultsContainer.innerHTML = "";
+
+  if (paginatedVenues.length === 0) {
+    resultsContainer.innerHTML = "<p>No venues found within the selected radius.</p>";
     return;
   }
 
-  filtered.forEach(venue => {
-    let costInfo = "";
-    if (!isNaN(dayGuests) || !isNaN(eveningGuests)) {
-      const totalCost = 
-        (venue.price_per_day_guest * (dayGuests || 0)) +
-        (venue.price_per_evening_guest * (eveningGuests || 0)) +
-        (parseFloat(venue.venue_hire) || 0);
-      costInfo = `<p><strong>Estimated Total:</strong> £${totalCost.toFixed(2)}</p>`;
-    } else {
-      costInfo = `<p><strong>Average Cost:</strong> £${venue.average_cost}</p>`;
-    }
-
+  paginatedVenues.forEach(venue => {
+    const totalCost = venue.estimated_cost;
     const div = document.createElement("div");
     div.className = "venue";
     div.innerHTML = `
@@ -94,13 +71,32 @@ document.getElementById("venueSearchForm").addEventListener("submit", async func
       <p><strong>Price per evening guest:</strong> £${venue.price_per_evening_guest} (${venue.evening_guest_includes})</p>
       <p><strong>Extras:</strong> ${venue.extra_costs}</p>
       <p><strong>Exclusions:</strong> ${venue.exclusions}</p>
-      ${costInfo}
+      <p><strong>Estimated Total:</strong> £${totalCost}</p>
       <p><strong>Contact:</strong> ${venue.contact}</p>
       <p><a href="${venue.website}" target="_blank">Visit Venue Website</a></p>
     `;
     resultsContainer.appendChild(div);
   });
-});
+}
+
+function setupPaginationControls() {
+  const paginationContainer = document.getElementById("paginationControls");
+  paginationContainer.innerHTML = "";
+  const totalPages = Math.ceil(currentVenues.length / venuesPerPage);
+  if (totalPages <= 1) return;
+  for (let i = 1; i <= totalPages; i++) {
+    const btn = document.createElement("button");
+    btn.textContent = i;
+    btn.className = "pagination-button";
+    if (i === currentPage) btn.classList.add("active");
+    btn.addEventListener("click", () => {
+      currentPage = i;
+      displayCurrentPage();
+      setupPaginationControls();
+    });
+    paginationContainer.appendChild(btn);
+  }
+}
 
 function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
   const R = 3958.8;
