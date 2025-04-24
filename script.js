@@ -99,3 +99,5 @@ function deg2rad(deg) {
 document.getElementById("sortFilter").addEventListener("change", () => {
   document.getElementById("venueSearchForm").dispatchEvent(new Event("submit"));
 });
+
+window.initAutocomplete = initAutocomplete;
