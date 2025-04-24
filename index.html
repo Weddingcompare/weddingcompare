@@ -5,13 +5,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wedding Compare</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE&libraries=places&callback=initAutocomplete" async defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
+  <header>
     <h1>Wedding Compare</h1>
-    <p class="tagline">Find your perfect venue</p>
+    <h2>Find your perfect venue</h2>
+  </header>
+  <main>
     <form id="venueSearchForm">
       <input id="locationInput" type="text" placeholder="Enter a location" required />
       <select id="searchRadius">
@@ -24,22 +26,27 @@
         <option value="100">100 miles</option>
         <option value="500">500 miles</option>
       </select>
-      <button type="button" onclick="toggleAdvancedSearch()">Advanced Search</button>
-      <div id="advancedSearch" style="display: none;">
-        <input id="venueDayGuests" type="number" placeholder="Number of day guests" />
-        <input id="venueEveningGuests" type="number" placeholder="Number of evening guests" />
-      </div>
       <button type="submit">Search</button>
+      <button type="button" id="advancedSearchToggle">Advanced Search</button>
     </form>
-    <select id="sortFilter">
-      <option value="">Sort By</option>
-      <option value="price-asc">Price (Low to High)</option>
-      <option value="price-desc">Price (High to Low)</option>
-      <option value="distance">Distance</option>
-    </select>
+    <div id="advancedSearch" style="display:none;">
+      <input type="number" id="venueDayGuests" placeholder="Number of day guests" />
+      <input type="number" id="venueEveningGuests" placeholder="Number of evening guests" />
+    </div>
+    <div id="sortContainer">
+      <label for="sortFilter">Sort by:</label>
+      <select id="sortFilter">
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="distance">Distance</option>
+      </select>
+    </div>
     <div id="venueResults"></div>
     <div id="pagination"></div>
-  </div>
+  </main>
   <script src="script.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE&libraries=places&callback=initAutocomplete">
+  </script>
 </body>
 </html>
