@@ -1,27 +1,45 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Wedding Compare</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJXeRrxloBHXxMbsEQK9otj3JuTe5eGAE&libraries=places&callback=initAutocomplete" async defer></script>
 </head>
 <body>
-  <h1>Wedding Compare</h1>
-  <form id="venueSearchForm">
-    <input id="autocomplete" placeholder="Enter a location" type="text" />
-    <select id="searchRadius">
-      <option value="1">1 mile</option>
-      <option value="5">5 miles</option>
-      <option value="10">10 miles</option>
-      <option value="20">20 miles</option>
-      <option value="50">50 miles</option>
+  <div class="container">
+    <h1>Wedding Compare</h1>
+    <p class="tagline">Find your perfect venue</p>
+    <form id="venueSearchForm">
+      <input id="locationInput" type="text" placeholder="Enter a location" required />
+      <select id="searchRadius">
+        <option value="1">1 mile</option>
+        <option value="3">3 miles</option>
+        <option value="5">5 miles</option>
+        <option value="10">10 miles</option>
+        <option value="25">25 miles</option>
+        <option value="50">50 miles</option>
+        <option value="100">100 miles</option>
+        <option value="500">500 miles</option>
+      </select>
+      <button type="button" onclick="toggleAdvancedSearch()">Advanced Search</button>
+      <div id="advancedSearch" style="display: none;">
+        <input id="venueDayGuests" type="number" placeholder="Number of day guests" />
+        <input id="venueEveningGuests" type="number" placeholder="Number of evening guests" />
+      </div>
+      <button type="submit">Search</button>
+    </form>
+    <select id="sortFilter">
+      <option value="">Sort By</option>
+      <option value="price-asc">Price (Low to High)</option>
+      <option value="price-desc">Price (High to Low)</option>
+      <option value="distance">Distance</option>
     </select>
-    <button type="submit">Search</button>
-  </form>
-  <div id="venueResults"></div>
-  <div id="paginationControls" class="pagination-controls"></div>
+    <div id="venueResults"></div>
+    <div id="pagination"></div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
