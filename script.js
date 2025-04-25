@@ -92,10 +92,9 @@ function displayPage(page) {
       <h2>${venue.name}</h2>
       <p><strong>Location:</strong> ${venue.location} (${venue.distance.toFixed(1)} miles)</p>
       <p><strong>Type:</strong> ${venue.type}</p>
-<p><strong>Venue Hire:</strong> ${venue.display_venue_hire}</p>
       <p><strong>Guests:</strong> ${venue.min_day_guests}-${venue.max_day_guests} day, up to ${venue.max_evening_guests} evening</p>
-      <p><strong>Day Price:</strong> £${venue.price_per_day_guest} (${venue.day_guest_includes})</p>
-      <p><strong>Evening Price:</strong> £${venue.price_per_evening_guest} (${venue.evening_guest_includes})</p>
+      <p><strong>Day Price:</strong> ${venue.price_per_day_guest} (${venue.day_guest_includes})</p>
+      <p><strong>Evening Price:</strong> ${venue.price_per_evening_guest} (${venue.evening_guest_includes})</p>
       <p><strong>Extras:</strong> ${venue.extra_costs}</p>
       <p><strong>Excludes:</strong> ${venue.exclusions}</p>
       <p><strong>${useEstimate ? 'Estimated Total:' : 'Average Total:'}</strong> £${useEstimate ? totalCost.toFixed(2) : (venue.average_cost)}</p>

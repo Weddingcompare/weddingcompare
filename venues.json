@@ -20,8 +20,7 @@
     "latitude": 53.1175,
     "longitude": -2.699,
     "venue_cost": "Included in guest price",
-    "venue_price": "Included in guest price",
-    "display_venue_hire": "Included in other costs"
+    "venue_price": "Included in guest price"
   },
   {
     "name": "Arley House & Gardens",
@@ -44,8 +43,7 @@
     "latitude": 52.4228,
     "longitude": -2.3617,
     "venue_cost": "3000 (average)",
-    "venue_price": "POA",
-    "display_venue_hire": "\u00a33000"
+    "venue_price": "POA"
   },
   {
     "name": "Colshaw Hall",
@@ -68,8 +66,7 @@
     "latitude": 53.2658,
     "longitude": -2.3278,
     "venue_cost": "Included in guest price",
-    "venue_price": "Included in guest price",
-    "display_venue_hire": "Included in other costs"
+    "venue_price": "Included in guest price"
   },
   {
     "name": "Grange Barn",
@@ -92,8 +89,7 @@
     "latitude": 52.9983,
     "longitude": -2.6333,
     "venue_cost": "4000 (average)",
-    "venue_price": "POA",
-    "display_venue_hire": "\u00a34000"
+    "venue_price": "POA"
   },
   {
     "name": "Hackness Grange",
@@ -116,8 +112,7 @@
     "latitude": 54.2967,
     "longitude": -0.5173,
     "venue_cost": "2000 (average)",
-    "venue_price": "POA",
-    "display_venue_hire": "\u00a32000"
+    "venue_price": "POA"
   },
   {
     "name": "The Barn",
@@ -140,8 +135,7 @@
     "latitude": 52.7064,
     "longitude": -2.7416,
     "venue_cost": "3500",
-    "venue_price": "POA",
-    "display_venue_hire": "\u00a33500"
+    "venue_price": "POA"
   },
   {
     "name": "Thyme House",
@@ -164,8 +158,7 @@
     "latitude": 51.7167,
     "longitude": -1.6833,
     "venue_cost": "5000",
-    "venue_price": "POA",
-    "display_venue_hire": "\u00a35000"
+    "venue_price": "POA"
   },
   {
     "name": "PHP Hall",
@@ -188,8 +181,7 @@
     "latitude": 51.2787,
     "longitude": 0.5217,
     "venue_cost": "2500",
-    "venue_price": "POA",
-    "display_venue_hire": "\u00a32500"
+    "venue_price": "POA"
   },
   {
     "name": "Swynford Manor",
@@ -212,8 +204,7 @@
     "contact": "enquiries@swynfordmanor.com",
     "website": "https://www.swynfordmanor.com",
     "venue_cost": "Included in guest price",
-    "venue_price": "Included in guest price",
-    "display_venue_hire": "Included in other costs"
+    "venue_price": "Included in guest price"
   },
   {
     "name": "Rookery Hall Hotel & Spa",
@@ -236,8 +227,7 @@
     "contact": "events@rookeryhall.co.uk",
     "website": "https://www.handpickedhotels.co.uk/rookeryhall",
     "venue_cost": "Included in guest price",
-    "venue_price": "Included in guest price",
-    "display_venue_hire": "Included in other costs"
+    "venue_price": "Included in guest price"
   },
   {
     "name": "Stretton Manor Barn",
@@ -260,8 +250,7 @@
     "contact": "info@strettonmanorbarn.co.uk",
     "website": "https://www.strettonmanorbarn.co.uk",
     "venue_cost": "5000",
-    "venue_price": "POA",
-    "display_venue_hire": "\u00a35000"
+    "venue_price": "POA"
   },
   {
     "name": "Merrydale Manor",
@@ -284,8 +273,7 @@
     "contact": "info@merrydalemanor.com",
     "website": "https://www.merrydalemanor.com",
     "venue_cost": "Included in guest price",
-    "venue_price": "Included in guest price",
-    "display_venue_hire": "Included in other costs"
+    "venue_price": "Included in guest price"
   },
   {
     "name": "Peak Edge Hotel",
@@ -308,8 +296,7 @@
     "contact": "weddings@peakedgehotel.co.uk",
     "website": "https://www.peakedgehotel.co.uk",
     "venue_cost": "4000",
-    "venue_price": "POA",
-    "display_venue_hire": "\u00a34000"
+    "venue_price": "POA"
   },
   {
     "name": "Folly Farm Centre",
@@ -332,8 +319,7 @@
     "contact": "weddings@follyfarm.org",
     "website": "https://www.follyfarm.org/weddings",
     "venue_cost": 11100,
-    "venue_price": "\u00a311100",
-    "display_venue_hire": "\u00a311100"
+    "venue_price": "\u00a311100"
   },
   {
     "name": "The Castle Westenhanger",
@@ -356,8 +342,7 @@
     "contact": "info@castlewestenhanger.co.uk",
     "website": "https://www.castlewestenhanger.co.uk",
     "venue_cost": 5500,
-    "venue_price": "\u00a35500",
-    "display_venue_hire": "\u00a35500"
+    "venue_price": "\u00a35500"
   },
   {
     "name": "The Oak Tree of Peover",
@@ -380,8 +365,7 @@
     "contact": "info@oaktreeofpeover.co.uk",
     "website": "https://www.oaktreeofpeover.co.uk",
     "venue_cost": 6950,
-    "venue_price": "\u00a36950",
-    "display_venue_hire": "\u00a36950"
+    "venue_price": "\u00a36950"
   },
   {
     "name": "Beamish Hall",
@@ -404,8 +388,7 @@
     "contact": "info@beamish-hall.co.uk",
     "website": "https://www.beamish-hall.co.uk",
     "venue_cost": 22995,
-    "venue_price": "\u00a322995",
-    "display_venue_hire": "\u00a322995"
+    "venue_price": "\u00a322995"
   },
   {
     "name": "The Cave Hotel",
@@ -428,8 +411,30 @@
     "contact": "info@cavehotels.com",
     "website": "https://www.cavehotels.com",
     "venue_cost": 8000,
-    "venue_price": "\u00a38000",
-    "display_venue_hire": "\u00a38000"
+    "venue_price": "\u00a38000"
+  },
+  {
+    "name": "Cefn Tilla Court",
+    "type": "Country Estate",
+    "location": "Llandenny, Usk, Monmouthshire",
+    "min_day_guests": 40,
+    "max_day_guests": 150,
+    "max_evening_guests": 200,
+    "venue_hire": "Variable / POA",
+    "price_per_day_guest": "\u00a30 pp",
+    "day_guest_includes": "Customisable, choose your own suppliers or recommended list",
+    "price_per_evening_guest": "\u00a30 pp",
+    "evening_guest_includes": "Customisable",
+    "extra_costs": "Accommodation available; options include main house and huts",
+    "exclusions": "All services to be arranged by couple or via recommended suppliers",
+    "average_cost": "POA",
+    "estimated_cost": "POA",
+    "contact": "01291 672595",
+    "website": "https://www.cefntilla.com",
+    "latitude": 51.7209,
+    "longitude": -2.8612,
+    "venue_cost": "POA",
+    "venue_price": "POA"
   },
   {
     "name": "Fairyhill",
@@ -452,8 +457,7 @@
     "latitude": 51.5916,
     "longitude": -4.2514,
     "venue_cost": "Included in guest packages",
-    "venue_price": "Included in guest price",
-    "display_venue_hire": "Included in other costs"
+    "venue_price": "Included in guest price"
   },
   {
     "name": "Hartham Park",
@@ -476,8 +480,7 @@
     "latitude": 51.4407,
     "longitude": -2.1835,
     "venue_cost": 4000,
-    "venue_price": "POA",
-    "display_venue_hire": "\u00a34000"
+    "venue_price": "POA"
   },
   {
     "name": "Highfield Park",
@@ -500,8 +503,7 @@
     "latitude": 51.3146,
     "longitude": -0.9782,
     "venue_cost": "Included in guest package",
-    "venue_price": "Included in guest price",
-    "display_venue_hire": "Included in other costs"
+    "venue_price": "Included in guest price"
   },
   {
     "name": "Orange Grove Hotel & Gardens",
@@ -524,8 +526,7 @@
     "latitude": 50.8701,
     "longitude": -1.3125,
     "venue_cost": 3500,
-    "venue_price": "\u00a33500",
-    "display_venue_hire": "\u00a33500"
+    "venue_price": "\u00a33500"
   },
   {
     "name": "The Parsonage Hotel & Spa",
@@ -548,8 +549,7 @@
     "latitude": 53.8804,
     "longitude": -1.0731,
     "venue_cost": 395,
-    "venue_price": "\u00a3395",
-    "display_venue_hire": "\u00a3395"
+    "venue_price": "\u00a3395"
   },
   {
     "name": "Quantock Lakes",
@@ -572,7 +572,29 @@
     "latitude": 51.1473,
     "longitude": -3.1804,
     "venue_cost": 9800,
-    "venue_price": "\u00a39800",
-    "display_venue_hire": "\u00a39800"
+    "venue_price": "\u00a39800"
+  },
+  {
+    "name": "St Tewdrics House",
+    "type": "Italianate Villa",
+    "location": "Chepstow, Monmouthshire",
+    "min_day_guests": 60,
+    "max_day_guests": 150,
+    "max_evening_guests": 200,
+    "venue_hire": "POA",
+    "price_per_day_guest": "\u00a30 pp",
+    "day_guest_includes": "Customisable with preferred caterers and bar service",
+    "price_per_evening_guest": "\u00a30 pp",
+    "evening_guest_includes": "Options include wood-fired pizza or bespoke platters",
+    "extra_costs": "Accommodation for up to 20 guests, custom drinks & menu",
+    "exclusions": "Decor, flowers, entertainment",
+    "average_cost": "POA",
+    "estimated_cost": "POA",
+    "contact": "info@sttewdrics.co.uk",
+    "website": "https://www.sttewdrics.co.uk",
+    "latitude": 51.6097,
+    "longitude": -2.6898,
+    "venue_cost": "POA",
+    "venue_price": "POA"
   }
 ]
