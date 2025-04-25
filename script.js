@@ -60,8 +60,14 @@ document.getElementById("sortFilter").addEventListener("change", () => {
 function sortResults() {
   const sort = document.getElementById("sortFilter").value;
   filteredVenues.sort((a, b) => {
-    if (sort === "price-asc") return (a.estimated_cost || a.average_cost) - (b.estimated_cost || b.average_cost);
-    if (sort === "price-desc") return (b.estimated_cost || b.average_cost) - (a.estimated_cost || a.average_cost);
+    if (sort === "price-asc") return (
+  parseInt((a.estimated_cost || a.average_cost).toString().replace(/[^0-9]/g, '')) -
+  parseInt((b.estimated_cost || b.average_cost).toString().replace(/[^0-9]/g, ''))
+);
+    if (sort === "price-desc") return (
+  parseInt((b.estimated_cost || b.average_cost).toString().replace(/[^0-9]/g, '')) -
+  parseInt((a.estimated_cost || a.average_cost).toString().replace(/[^0-9]/g, ''))
+);
     if (sort === "distance") return a.distance - b.distance;
     return 0;
   });
