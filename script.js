@@ -97,6 +97,8 @@ function displayPage(page) {
       <p><strong>Evening Price:</strong> £${venue.price_per_evening_guest} (${venue.evening_guest_includes})</p>
       <p><strong>Extras:</strong> ${venue.extra_costs}</p>
       <p><strong>Excludes:</strong> ${venue.exclusions}</p>
+      <p><strong>Venue Cost:</strong> ${typeof venue.venue_cost === 'number' ? `£${venue.venue_cost}` : 'Included in guest price'}</p>
+
       <p><strong>${useEstimate ? 'Estimated Total:' : 'Average Total:'}</strong> £${useEstimate ? totalCost.toFixed(2) : (venue.average_cost)}</p>
       <p><strong>Contact:</strong> ${venue.contact}</p>
       <a href="${venue.website}" target="_blank">Visit Website</a>
