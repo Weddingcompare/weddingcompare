@@ -43,7 +43,7 @@
     "latitude": 52.4228,
     "longitude": -2.3617,
     "venue_cost": "3000 (average)",
-    "venue_price": "POA"
+    "venue_price": "\u00a33000"
   },
   {
     "name": "Colshaw Hall",
@@ -89,7 +89,7 @@
     "latitude": 52.9983,
     "longitude": -2.6333,
     "venue_cost": "4000 (average)",
-    "venue_price": "POA"
+    "venue_price": "\u00a34000"
   },
   {
     "name": "Hackness Grange",
@@ -112,7 +112,7 @@
     "latitude": 54.2967,
     "longitude": -0.5173,
     "venue_cost": "2000 (average)",
-    "venue_price": "POA"
+    "venue_price": "\u00a32000"
   },
   {
     "name": "The Barn",
@@ -135,7 +135,7 @@
     "latitude": 52.7064,
     "longitude": -2.7416,
     "venue_cost": "3500",
-    "venue_price": "POA"
+    "venue_price": "\u00a33500"
   },
   {
     "name": "Thyme House",
@@ -158,7 +158,7 @@
     "latitude": 51.7167,
     "longitude": -1.6833,
     "venue_cost": "5000",
-    "venue_price": "POA"
+    "venue_price": "\u00a35000"
   },
   {
     "name": "PHP Hall",
@@ -181,7 +181,7 @@
     "latitude": 51.2787,
     "longitude": 0.5217,
     "venue_cost": "2500",
-    "venue_price": "POA"
+    "venue_price": "\u00a32500"
   },
   {
     "name": "Swynford Manor",
@@ -250,7 +250,7 @@
     "contact": "info@strettonmanorbarn.co.uk",
     "website": "https://www.strettonmanorbarn.co.uk",
     "venue_cost": "5000",
-    "venue_price": "POA"
+    "venue_price": "\u00a35000"
   },
   {
     "name": "Merrydale Manor",
@@ -296,7 +296,7 @@
     "contact": "weddings@peakedgehotel.co.uk",
     "website": "https://www.peakedgehotel.co.uk",
     "venue_cost": "4000",
-    "venue_price": "POA"
+    "venue_price": "\u00a34000"
   },
   {
     "name": "Folly Farm Centre",
@@ -434,7 +434,7 @@
     "latitude": 51.7209,
     "longitude": -2.8612,
     "venue_cost": "POA",
-    "venue_price": "POA"
+    "venue_price": "Included in guest price"
   },
   {
     "name": "Fairyhill",
@@ -480,7 +480,7 @@
     "latitude": 51.4407,
     "longitude": -2.1835,
     "venue_cost": 4000,
-    "venue_price": "POA"
+    "venue_price": "\u00a34000"
   },
   {
     "name": "Highfield Park",
@@ -595,6 +595,6 @@
     "latitude": 51.6097,
     "longitude": -2.6898,
     "venue_cost": "POA",
-    "venue_price": "POA"
+    "venue_price": "Included in guest price"
   }
 ]
