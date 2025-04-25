@@ -1,0 +1,90 @@
+body {
+  font-family: 'Georgia', serif;
+  background-color: #f9f5f0;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 0;
+}
+.tagline {
+  font-size: 1.2em;
+  color: #777;
+  margin-top: 0;
+}
+form {
+  margin: 20px 0;
+}
+input, select, button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 1em;
+}
+button {
+  background-color: #d4af37;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.venue {
+  background: white;
+  border-radius: 8px;
+  margin: 15px 0;
+  padding: 15px;
+  text-align: left;
+}
+#pagination button {
+  margin: 5px;
+}
+
+.venue p:last-of-type {
+  font-weight: bold;
+  margin-top: 10px;
+}
+.venue p strong {
+  display: inline-block;
+  width: 150px;
+}
+
+.cost-line {
+  margin-top: 10px;
+  font-size: 1.1em;
+}
+.cost {
+  color: #d4af37;
+  font-weight: bold;
+}
+
+#clearSearch {
+  margin-top: 10px;
+  background-color: #bbb;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#clearSearch:hover {
+  background-color: #999;
+}
+
+@media (max-width: 600px) {
+  input, select, button {
+    width: 100%;
+    margin: 10px 0;
+  }
+  .venue p strong {
+    width: 100%;
+    display: block;
+  }
+}
