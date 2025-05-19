@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Submit Your Venue – Wedding Compare</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Submit Your Venue</h1>
+    <p class="tagline">Add your venue to Wedding Compare</p>
+
+    <form id="venueForm">
+      <input type="text" name="name" placeholder="Venue Name" required />
+      <input type="text" name="type" placeholder="Venue Type" required />
+      <input type="text" name="location" placeholder="Venue Location" required />
+      <input type="email" name="contact" placeholder="Contact Email" required />
+      <input type="url" name="website" placeholder="Website URL" required />
+      <input type="number" name="min_day_guests" placeholder="Min Day Guests" required />
+      <input type="number" name="max_day_guests" placeholder="Max Day Guests" required />
+      <input type="number" name="max_evening_guests" placeholder="Max Evening Guests" required />
+      <input type="text" name="venue_price" placeholder="Venue Hire Price" required />
+      <input type="text" name="price_per_day_guest" placeholder="Price Per Day Guest" required />
+      <input type="text" name="price_per_evening_guest" placeholder="Price Per Evening Guest" required />
+      <input type="text" name="day_guest_includes" placeholder="What Day Guest Price Includes" required />
+      <input type="text" name="evening_guest_includes" placeholder="What Evening Guest Price Includes" required />
+      <input type="text" name="extra_costs" placeholder="Extras" required />
+      <input type="text" name="exclusions" placeholder="Exclusions" required />
+      <input type="number" name="average_cost" placeholder="Average Total Cost" required />
+      <input type="number" name="estimated_cost" placeholder="Estimated Cost" required />
+      <input type="number" name="latitude" step="0.0001" placeholder="Latitude" required />
+      <input type="number" name="longitude" step="0.0001" placeholder="Longitude" required />
+      <input type="url" name="image_url" placeholder="Link to Venue Image" required />
+      <button type="submit">Submit Venue</button>
+    </form>
+
+    <p id="formStatus" style="margin-top: 20px;"></p>
+  </div>
+
+  <script>
+    document.getElementById('venueForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const status = document.getElementById('formStatus');
+      status.textContent = 'Submitting...';
+
+      try {
+        const response = await fetch('/.netlify/functions/submit-venue', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(formData.entries()))
+        });
+
+        if (response.ok) {
+          status.textContent = 'Venue submitted successfully!';
+          e.target.reset();
+        } else {
+          const error = await response.text();
+          status.textContent = 'Submission failed: ' + error;
+        }
+      } catch (err) {
+        status.textContent = 'Error: ' + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
